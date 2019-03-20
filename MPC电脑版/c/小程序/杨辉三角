@@ -1,0 +1,55 @@
+/*
+杨辉三角
+by:跃然
+QQ:643552878
+2012.5.9
+*/
+
+
+#include <base.h>
+#define n 10
+//输出行数
+
+int init(void)
+{
+int i,j,a[n][n];
+printf("\n");
+for(i=0;i<n;i++)
+{a[i][0]=1;a[i][i]=1;}
+
+for(i=2;i<n;i++)
+for(j=1;j<i;j++)
+a[i][j]=a[i-1][j-1]+a[i-1][j];
+
+for(i=0;i<n;i++)
+{
+for(j=0;j<=i;j++)
+printf("%d ",a[i][j]);
+printf("\n");
+}
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{   if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

@@ -1,0 +1,25 @@
+int jmsj(int number)
+{
+int i,j,temp,count=0;
+int num[6];
+for(i=0;number>0;i++)
+{
+num[i]=number%10;
+number=number/10;
+if(i==5)break;
+
+}
+
+for(i=0;i<6;i++)
+num[i]=(num[i]+5)%10;
+
+temp=num[5];
+num[5]=num[0];
+num[0]=temp;
+number=(num[0]*100000)+(num[1]*10000)+(num[2]*1000)+(num[3]*100)+(num[4]*10)+num[5];
+
+
+return number;
+
+
+}

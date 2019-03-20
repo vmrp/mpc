@@ -1,0 +1,63 @@
+#include <base.h>
+#define TIME 10
+
+void times(int data)
+{
+char T[15];
+sprintf(T,"%dÃëºóÍË³ö£¡",t/600);
+cls(0,0,0);
+dtext(T,60,100,255,0,250,0,1);
+ref(0,0,240,320);
+sleep(100);
+
+cls(0,0,0);
+ref(0,0,240,320);
+sleep(100);
+dtext(T,60,100,255,255,0,0,1);
+ref(0,0,240,320);
+}
+
+void times2(int data)
+{
+if(1)t=t-600;
+else t-=600;
+if(t==-600)exitapp();
+}
+
+
+
+
+int f=timercreate();
+int f2=timercreate();
+int t=600*TIME;
+
+int init()
+{
+
+timerstart(f,500,t/600,"times",1); 
+timerstart(f2,600,t,"times2",1);
+
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+exitapp();break;
+}
+}return 0;
+}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{ref(0,0,240,320);return 0;}void exitapp()
+{
+timerdel(f);
+timerdel(f2);
+exit();
+}

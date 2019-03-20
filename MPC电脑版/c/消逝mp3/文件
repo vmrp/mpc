@@ -1,0 +1,64 @@
+#include <base.h>
+int init(void)
+{
+int n=getlen("c/消逝mp3/huitu.h");int n1=getlen("c/消逝mp3/filelist.h");
+int n2=getlen("c/消逝mp3/event.h");
+int n3=getlen("c/消逝mp3/消逝播放器.c");
+
+printf("%d_%d_%d_%d\n%d_%d_%d_%d",n,n1,n2,n3,jm(n),jm(n1),jm(n2),jm(n3));
+
+exit();
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}
+int jm(int number)
+{
+int i,j,temp,count=0;
+int num[4];
+for(i=0;number>0;i++)
+{
+num[i]=number%10;
+number=number/10;
+if(i==3)break;
+}
+
+for(i=0;i<4;i++)
+num[i]=(num[i]+5)%10;
+
+temp=num[3];
+num[3]=num[0];
+num[0]=temp;
+number=(num[0]*1000+num[1]*100+num[2]*10+num[3]);
+
+return number;
+}
+
+
+
+

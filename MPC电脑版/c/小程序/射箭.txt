@@ -1,0 +1,71 @@
+#include <base.h>
+
+int jf; 
+int init()
+{
+cls(0,0,0);
+
+dtext("Éä¼ý",100,140,255,110,255,0,1);
+drect(0,0,240,40,255,100,255);
+drect(0,280,240,40,255,100,255);
+ref(0,0,240,320);
+return 0;
+}
+
+void kz(int jz)
+{
+jf=timercreate();
+timerstart(jf,100,jz,"main",0);
+}
+
+
+void main(int data)
+{
+int j=data;
+int x,y;cls(0,0,0);
+
+for(y=320;y>=-40;y-=35)
+{
+cls(55,55,55);
+x=(j-1)*30;
+
+
+dtext("^",x,y,255,255,0,0,1);
+
+
+dtext("| |",x,y+9,255,255,0,0,1);
+dtext("| |",x,y+18,255,255,0,0,1);
+dtext("_",x,y+22,255,255,0,0,1);
+ref(0,0,240,320);
+}
+
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+if(jf!=0)timerdel(jf);
+
+  switch(p1)
+{
+case _SRIGHT:
+timerdel(jf);exit();break;
+
+case _1:kz(1);break;
+case _2:kz(2);break;
+case _3:kz(3);break;
+case _4:kz(4);break;
+case _5:kz(5);break;
+case _6:kz(6);break;
+case _7:kz(7);break;
+case _8:kz(8);break;
+
+   }
+}return 0;
+}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{ref(0,0,240,320);return 0;}

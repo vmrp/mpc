@@ -1,0 +1,59 @@
+/*输入20个数，去掉最大最小值，输出平均值
+by:跃然
+QQ:643552878
+2012.5.12
+*/
+#include <base.h>
+
+
+int init()
+{
+int i,i2,s[20];
+
+for(i=0;i<20;i++)
+printf("%d ",(s[i]=rand()/300));
+
+for(i=0;i<20;i++)
+for(i2=0;i2<20;i2++)
+if(s[i2]<s[i2+1])
+{
+int temp=s[i2];
+s[i2]=s[i2+1];
+s[i2+1]=temp;
+}
+
+for(i=1;i<19;i++)
+{i2=s[i]+i2;}
+
+printf("\n\n平均值为%d",i2/18);
+
+exit();
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+if(KY_DOWN==type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

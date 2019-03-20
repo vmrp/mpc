@@ -1,0 +1,127 @@
+/*
+二分查找算法 示例
+by:每天进步一点
+QQ:643552878
+
+*/
+
+#include <base.h>
+#define REF ref(0,0,SCRW,SCRH)
+
+int init()
+{
+ 
+ int len=5;
+ int a[5]={12,34,6,1,55};
+
+ cls(55,55,55);
+ drect(0,0,SCRW,30,1500,250,0);
+ dtext("二分查找算法",0,0,100,55,125,0,0);
+ REF;
+ int tw,th;
+ textwh("0",0,0,&tw,&th);
+ for(int i;i<len;i++)
+{ printf_d("%d、",a[i],i*tw*4,SCRH/2-th*2,25,255,255);
+ REF;
+ printf("%d、",a[i]); 
+}
+
+ dtext("搜索中…",0,SCRH/2,255,25,255,0,0);
+ REF;
+ int x=11;
+ int n=so(a,len,x);
+
+ printf("\n");
+ char *txt;
+ if(n>=0)
+{ txt="数组元素中存在%d";
+ printf(txt,x);
+ printf_d(txt,x,0,SCRH/2+30,255,255,25);
+} 
+
+ else if(n<0)
+{ txt="数组中不存在%d";
+ printf(txt,x);
+ printf_d(txt,x,0,SCRH/2+30,255,255,25);
+}
+ REF;
+    return 0;
+}
+
+/*在数组长度为n的num中查找x，所存在，返回x在num中的下标，若不存在，返回-1。*/
+int so(int *num,int n,int x)
+{
+ int low,high=n,mid,res=-1;
+/*
+low下界下标
+high上界下标
+mid记录当前下标
+res返回搜索结果
+*/
+ while(low<=high)
+{  
+ mid=(low+high)/2;
+ //2分数组
+
+ if(num[mid]==x)
+ {res=mid;break;}
+ //所存在，记录下标，退出循环。
+
+ else if(num[mid]<x)
+ low=mid+1;
+ //上半部分,缩小范围
+
+ else
+ high=mid-1;
+ //下半部分，缩小范围
+}
+ return res;
+
+}
+
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN==type)
+    {
+ switch(p1)
+  {
+  case _SRIGHT:
+  exit();break;
+  case _1:
+            break;
+
+   }
+  }
+ return 0;
+}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}
+
+
+/*
+x,y为在屏幕输出位置(不支持换行)。
+r,g,b文字颜色。
+返回:
+成功 1
+示败 0
+*/
+
+int printf_d(char *s1,int f,int x,int y,int8 r,int8 g,int8 b)
+{
+
+char *s2=malloc(strlen(s1)+10);
+
+sprintf(s2,s1,f);
+if(strlen(s2)<=0)
+{ free(s2);
+ return 0;
+}
+
+dtext(s2,x,y,r,g,b,FALSE,1);
+ref(0,0,SCRW,SCRH);
+free(s2);
+return 1;
+}

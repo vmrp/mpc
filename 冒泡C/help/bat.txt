@@ -1,0 +1,32 @@
+#include "base.h"
+uint8 *buf;
+int32 len,f;
+
+mkdir("c/例程");
+void unpack(char*in,char*out)
+{
+    buf=NULL;readfilefrommrp(NULL,in,&buf,&len,0);f=open(out,12);write(f,buf,len);close(f);free(buf);
+}
+unpack("folder.bmp","c/例程/1.bmp");
+unpack("4","c/base.h");
+unpack("5","c/ctype.h");
+unpack("6","c/sound.h");
+unpack("net.h","c/net.h");
+unpack("t","c/模版.c");
+unpack("8","c/欢迎.txt");
+unpack("10","c/更新说明.txt");
+
+unpack("11","c/例程/BMP图片显示.c");
+unpack("12","c/例程/helloworld.h");
+unpack("13","c/例程/helloworld.c");
+unpack("14","c/例程/MP3播放.c");
+unpack("15","c/例程/unicode转gb2312.c");
+unpack("16","c/例程/编辑框.c");
+unpack("17","c/例程/菜单.c");
+unpack("18","c/例程/定时器.c");
+unpack("19","c/例程/对话框，文件查找.c");
+unpack("20","c/例程/内存与震动.c");
+unpack("21","c/例程/屏幕坐标.c");
+unpack("22","c/例程/时间日期.c");
+unpack("23","c/例程/数组与排序.c");
+unpack("24","c/例程/贪吃蛇.c");

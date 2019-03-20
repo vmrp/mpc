@@ -1,0 +1,21 @@
+C:\SKYsdk\include;.\sfw;.\sfw\common;.\sfw\gui;.\sfw\res;.\sfw\controls;.\src;C:\skysdk\compiler\plugins\advbar;C:\SKYsdk\include\plugins;.\sfw\adv;.\interpreter\src;.\interpreter\syslib
+
+WIN32;_WINDOWS;SCREEN_SIZE_240320;SIM_MOD;SDK_MOD
+
+C:\SKYsdk\Simulator\lib
+
+WS2_32.lib winmm.lib dsound.lib dxguid.lib simlib.lib SIM_mr_helperexbnp.lib vfw32.lib mainext_win32.lib passport_net_win32.lib exttool_win32.lib browser_win32.lib brwcore_win32.lib platreq_win32.lib verdload_win32.lib netpay_win32.lib jpeg_sim.lib simulator.lib data_codec_sim.lib skyfont_win32.lib
+
+
+LIBCD.lib;LIBC.lib;LIBCMT.lib;LIBCMTD.lib
+
+
+_sim_dummy
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+#include <base.h>
+#define REF ref(0,0,SCRW,SCRH)
+
+
+int init(void)
+{
+int x,y,fx=100,fy=50;x=fx;y=fy;
+ x=fx;
+ int w=100,h=100;
+
+ for(y=fy;y<=(fy+h/2);y++)
+{ x--;
+ dline(x,y,x+w,y,x,y,x);
+ REF;
+}
+
+for(y=y;y<=(fy+h);y++)
+{dline(x,y,x+w,y,y,y+x,y);
+REF;
+}
+
+
+y=fy+h/2;
+for(x=fx+w/2;x<=(fx+w);x++)
+{y--;
+dline(x,y,x,y+w/2,x,y,y);
+REF;
+}
+    return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

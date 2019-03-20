@@ -1,0 +1,126 @@
+/*助记省级行政区
+by:每天进步一点
+自适屏
+date:2012.5.23
+注:有些行政区名字太长所以省略了后面的！
+*/
+
+#include <base.h>
+
+#define FONT 1
+
+#define LINE_R 255
+#define LINE_G 255
+#define LINE_B 0
+//线的颜色
+
+#define bei cls(250,250,250)
+//绘背景
+
+void line(int x,int y,int x2,int y2)
+{dline(x,y,x2,y2,LINE_R,LINE_G,LINE_B);
+}
+void text(char *txt,int x,int y)
+{dtext(txt,x,y,2,2,2,0,FONT);}
+//内文字颜色可改
+
+
+
+#define REF ref(0,0,SCRW,SCRH)
+int tw,th;
+textwh("省",FALSE,1,&tw,&th);
+int apagelen=SCRH/th-1;
+int allpage=34/(apagelen)+1;
+int pagenow=0;
+
+char *pt[3]={"名称","简称","政心"};
+//行政中心简称政心
+
+char *txt[34]={"北京市","天津市","河北省","山西省","辽宁省","吉林省","上海市","江苏省","浙江省","安徽省","福建省","江西省","山东省","湖北省","湖南省","广东省","海南省","重庆市","四川省","贵州省","云南省","陕西省","甘肃省","青海省","台湾省","河南省","内蒙古...","黑龙江省","香港...","广西...","西藏","宁夏...","新疆...","澳门"};
+
+char *txt2[34]={"京","津","冀","晋","辽","吉","沪","苏","浙","皖","闽","赣","鲁","鄂","湘","粤","琼","渝","川(蜀)","贵(黔)","云(滇)","陕(秦)","甘(陇)","青","台","豫","内蒙古","黑","港","桂","藏","宁","新","澳"};
+
+char *txt3[34]={"北京","天津","石家庄","太原","沈阳","长春","上海","南京","杭州","合肥","福州","南昌","济南","武汉","长沙","广州","海口","重庆","成都","贵阳","昆明","西安","兰州","西宁","台北","郑州","呼和浩特","哈尔滨","港","南宁","拉萨","银川","乌鲁木齐","澳门"};
+
+
+int init()
+{
+ changepage();
+ return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+    case _UP:case _2:
+case _LEFT:
+case _4:
+if(pagenow>0)pagenow--;
+else pagenow=allpage-1;
+changepage();
+break;
+
+case _DOWN:case _8:
+case _RIGHT:case _6:
+if(pagenow<allpage)pagenow++;
+else pagenow=0;
+changepage();
+break;
+
+        }
+    }
+    return 0;
+}
+
+int pause(void)
+{return 0;}
+
+int resume(void)
+{return 0;}
+
+void changepage()
+{
+bei;
+
+int x1=SCRW-tw*3,x2=x1-tw*3;
+
+text(pt[0],0,0);
+text(pt[1],x1,0);
+text(pt[2],x2,0);
+for(int y=th;y<=SCRH;y+=th)
+line(0,y,SCRW,y);
+
+line(x2,0,x2,SCRH);
+
+line(x1,0,x1,SCRH);REF;
+int w;
+
+
+int c,z;
+if(pagenow<(allpage-1))
+{c=pagenow*apagelen;
+z=((pagenow*apagelen)+apagelen-1);
+}
+
+else
+{
+c=(allpage-pagenow+1)*apagelen;
+z=(allpage*apagelen-(apagelen-34%apagelen))-1;
+}
+
+for(int n=c;n<=z;n++)
+{
+w+=th;
+text(txt[n],0,w);
+text(txt2[n],x2,w);
+text(txt3[n],x1,w);
+REF;
+}
+
+}

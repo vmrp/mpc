@@ -1,0 +1,50 @@
+/*有n个人围成一圈,从第一个人开始报数(1到3),报到3的人退出圈,最后剩下的人是几号*/
+#include <base.h>
+#define N 5
+
+int init()
+{
+ int i,k,m,n=22, num[N],*p;
+printf("总人数%d",n);
+p=num;
+
+for(i=0;i<n;i++)
+while(m<n-1)m++;
+{ if(*(p+i)!=0)k++;
+ *(p+i)=i+1;
+ if(k==3)i=0;
+ k=m=0;
+ {*(p+i)=0;}
+ i++;
+ if(i==n)i=0;
+}
+
+while(*p==0)p++;
+printf("\n最后剩下的是%d号",*p);
+
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

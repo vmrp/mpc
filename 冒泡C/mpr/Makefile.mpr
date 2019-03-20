@@ -1,0 +1,276 @@
+[information]
+projectname=application.mpr
+filename=mrcc.mrp
+appname=冒泡开发实验系统
+appid=111210
+version=1003
+visible=1
+cpu=3
+vendor=默水瓶
+description=冒泡开发实验系统
+include=${MRPBUILDER_HOME}..\include\, ${MRPBUILDER_HOME}..\include\plugins,..\sfw\,..\sfw\other, ..\sfw\res\, ..\sfw\common\, ..\sfw\gui\, ..\sfw\controls\, ..\sfw\net\, ..\src\
+output_format=mrp
+config=mtk176
+#,mtk240,mtk400,spr176,spr240,spr400
+
+
+#/////////////////////////////////mtk176/////////////////////////
+[config_mtk176]
+output=..\bin\mtk176.mrp
+bmp_mode=normal
+
+[config_game_mtk176]
+plugin=app
+
+[files_mtk176]
+file01 = game_mtk176.ext(name=game.ext)
+file02 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_mtk.mrp
+file03 = ${MRPBUILDER_HOME}\plugins\mainext\mainext_mtk_d.mrp
+file04 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_mtk.mrp
+#file05 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_mtk176.mrp(plugins.lst,name=advbar.mrp,packing)
+
+[files_game_mtk176]
+file05 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_mtk.lib
+file06 = ..\lib\mtk176.lib
+file07 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_mtk.lib
+#file08 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_mtk.lib
+file09 = ${MRPBUILDER_HOME}\security\mrpverify_mtk_dbg.lib
+file10 = ..\lib\mtk_vm.lib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/////////////////////////////////mtk240/////////////////////////
+[config_mtk240]
+output=bin\mtk240.mrp
+bmp_mode=normal
+
+[config_game_mtk240]
+plugin=app
+
+[files_mtk240]
+file01 = game_mtk240.ext(name=game.ext)
+file02 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_mtk.mrp
+file03 = ${MRPBUILDER_HOME}\plugins\mainext\mainext_mtk_d.mrp
+file04 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_mtk.mrp
+file05 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_mtk240.mrp(plugins.lst,name=advbar.mrp,packing)
+
+[files_game_mtk240]
+file05 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_mtk.lib
+file06 = lib\mtk240.lib
+file07 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_mtk.lib
+file08 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_mtk.lib
+file09 = ${MRPBUILDER_HOME}\security\mrpverify_mtk_dbg.lib
+file10 = lib\mtk_vm.lib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/////////////////////////////////mtk400/////////////////////////
+[config_mtk400]
+output=bin\mtk400.mrp
+bmp_mode=normal
+
+[config_game_mtk400]
+plugin=app
+
+[files_mtk400]
+file01 = game_mtk400.ext(name=game.ext)
+file02 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_mtk.mrp
+file03 = ${MRPBUILDER_HOME}\plugins\mainext\mainext_mtk_d.mrp
+file04 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_mtk.mrp
+file05 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_mtk240.mrp(plugins.lst,name=advbar.mrp,packing)
+
+[files_game_mtk400]
+file05 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_mtk.lib
+file06 = lib\mtk400.lib
+file07 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_mtk.lib
+file08 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_mtk.lib
+file09 = ${MRPBUILDER_HOME}\security\mrpverify_mtk_dbg.lib
+file10 = lib\mtk_vm.lib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/////////////////////////////////spr176/////////////////////////
+[config_spr176]
+output=bin\spr176.mrp
+bmp_mode=spreadtrum
+
+[config_game_spr176]
+plugin=app
+
+[files_spr176]
+file01 = game_spr176.ext(name=game.ext)
+file02 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_sp.mrp
+file03 = ${MRPBUILDER_HOME}\plugins\mainext\mainext_sp_d.mrp
+file04 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_sp.mrp
+file05 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_sp176.mrp(plugins.lst,name=advbar.mrp,packing)
+
+[files_game_spr176]
+file05 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_sp.lib 
+file06 = lib\spr176.lib
+file07 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_sp.lib
+file08 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_sp.lib
+file09 = ${MRPBUILDER_HOME}\security\mrpverify_sp_dbg.lib
+file10 = lib\spr_vm.lib
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/////////////////////////////////spr240/////////////////////////
+[config_spr240]
+output=bin\spr240.mrp
+bmp_mode=spreadtrum
+
+[config_game_spr240]
+plugin=app
+
+[files_spr240]
+file01 = game_spr240.ext(name=game.ext)
+file02 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_sp.mrp
+file03 = ${MRPBUILDER_HOME}\plugins\mainext\mainext_sp_d.mrp
+file04 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_sp.mrp
+file05 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_sp240.mrp(plugins.lst,name=advbar.mrp,packing)
+
+[files_game_spr240]
+file05 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_sp.lib 
+file06 = lib\spr240.lib
+file07 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_sp.lib
+file08 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_sp.lib
+file09 = ${MRPBUILDER_HOME}\security\mrpverify_sp_dbg.lib
+file10 = lib\spr_vm.lib
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#/////////////////////////////////spr400/////////////////////////
+[config_spr400]
+output=bin\spr400.mrp
+bmp_mode=spreadtrum
+
+[config_game_spr400]
+plugin=app
+
+[files_spr400]
+file01 = game_spr400.ext(name=game.ext)
+file02 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_sp.mrp
+file03 = ${MRPBUILDER_HOME}\plugins\mainext\mainext_sp_d.mrp
+file04 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_sp.mrp
+file05 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_sp240.mrp(plugins.lst,name=advbar.mrp,packing)
+
+[files_game_spr400]
+file05 = ${MRPBUILDER_HOME}\plugins\skyfont\skyfont_sp.lib 
+file06 = lib\spr400.lib
+file07 = ${MRPBUILDER_HOME}\plugins\verdload\verdload_sp.lib
+file08 = ${MRPBUILDER_HOME}\plugins\advbar\advbar_sp.lib
+file09 = ${MRPBUILDER_HOME}\security\mrpverify_sp_dbg.lib
+file10 = lib\spr_vm.lib
+
+
+
+
+
+
+
+
+
+
+
+[files]
+#resource file id between 0 - 199
+file0 = ..\sfw\res\res_str.mrp
+file1 = ..\sfw\res\bmp\folder.bmp
+file2 = ..\sfw\res\bmp\file.bmp
+#file3 = ..\sfw\res\bmp\logo.bmp
+
+file4 = ..\help\base.h(name=4)
+file5 = ..\help\ctype.h(name=5)
+file6 = ..\help\sound.h(name=6)
+file66 = ..\help\net.h
+
+
+file7 = ..\help\t
+file8 = ..\help\欢迎.txt(name=8)
+file9 = ..\help\bat.txt(name=bat)
+file10 = ..\help\更新说明.txt(name=10)
+
+file11 = ..\help\demo\BMP图片显示.txt(name=11)
+file12 = ..\help\demo\helloworld.h(name=12)
+file13 = ..\help\demo\helloworld.txt(name=13)
+file14 = ..\help\demo\MP3播放.txt(name=14)
+file15 = ..\help\demo\unicode转gb2312.txt(name=15)
+file16 = ..\help\demo\编辑框.txt(name=16)
+file17 = ..\help\demo\菜单.txt(name=17)
+file18 = ..\help\demo\定时器.txt(name=18)
+file19 = ..\help\demo\对话框，文件查找.txt(name=19)
+file20 = ..\help\demo\内存与震动.txt(name=20)
+file21 = ..\help\demo\屏幕坐标.txt(name=21)
+file22 = ..\help\demo\时间日期.txt(name=22)
+file23 = ..\help\demo\数组与排序.txt(name=23)
+file24 = ..\help\demo\贪吃蛇.txt(name=24)

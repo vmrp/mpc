@@ -1,0 +1,209 @@
+int year,y[4],m[2];
+int month,d[2],day;
+int w=0,jm=1;
+//jm=1输入,jm=2计算出
+
+
+#include <base.h>
+//#include "c/include/LZB.txt"
+
+
+
+int init()
+{
+if(jm==1)jm1();
+if(jm==2)d_a_y();
+return 0;
+}
+
+int d_a_y()
+{
+sleep(300);
+
+if(month>12)
+{
+dtext("输入错误！！！",50,60,255,255,255,0,1);
+dtext("月数不大于12！！！",50,120,255,255,255,0,1);
+dtext("日不大于31！！！",50,180,255,255,255,0,1);
+}
+else if(day>=32)
+{
+dtext("输入错误！！！",50,60,255,255,255,0,1);
+dtext("月数不大于12！！！",50,120,255,255,255,0,1);
+dtext("日不大于31！！！",50,180,255,255,255,0,1);
+}
+
+
+else if(month<=12&&day<=31)
+{
+int sum;
+if(month-1!=0)
+{
+switch(month)
+ {
+case 1:sum=0;break;
+case 2:sum=31;break;
+case 3:sum=59;break;
+case 4:sum=90;break;
+case 5:sum=120;break;
+case 6:sum=151;break;
+case 7:sum=181;break;
+case 8:sum=212;break;
+case 9:sum=243;break;
+case 10:sum=273;break;
+case 11:sum=304;break;
+case 12:sum=334;break;
+}
+sum=sum+day;
+}
+else sum=day;
+if(year%4!=0)sum+=1;
+char day_[20];
+sprintf(day_,"是今年的第%d天！",sum);
+cls(15,15,15);
+dtext(day_,20,100,255,255,255,0,1);
+}
+int i;
+for(i=1;i<=40;i++)
+dline(0,320-i,240,320-i,i*2,i+10,i);
+
+dtext("计算结果:",80,20,255,255,255,0,1);
+YESNO();
+
+dtext("按#重输,右软键退出！",10,200,255,255,0,0,1);
+
+
+ref(0,0,240,320);
+
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+     switch(p1)
+{case _SRIGHT:
+over();exit();break;
+
+case _0:shuru(0);break;
+case _1:shuru(1);break;
+case _2:shuru(2);break;
+case _3:shuru(3);break;
+case _4:shuru(4);break;
+case _5:shuru(5);break;
+case _6:shuru(6);break;
+case _7:shuru(7);break;
+case _8:shuru(8);break;
+case _9:shuru(9);break;
+
+case _SLEFT:
+{js();jm=2;init();}
+break;
+
+case _POUND:
+{jm=1;w=0;init();}
+break;
+
+} }
+return 0; }
+
+
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}
+
+
+int shuru(int j)
+{if(w<8)w++;
+if(w==1)y[0]=j;
+if(w==2)y[1]=j;
+if(w==3)y[2]=j;
+if(w==4)y[3]=j;
+
+if(w==5)m[0]=j;
+if(w==6)m[1]=j;
+
+if(w==7)d[0]=j;
+if(w==8)d[1]=j;
+
+jm1();
+
+return 0;
+}
+
+
+int jm1()
+{cls(155,155,155);
+int j;
+if(w>=0&&w<=4)j=60;
+if(w>4&&w<=6)j=120;
+if(w>6&&w<=8)j=180;
+
+dline(20,90,90,90,0,0,0);
+dline(20,150,90,150,0,0,0);
+dline(20,210,90,210,0,0,0); 
+
+dtext("请输入年月日",50,10,0,0,0,0,1);
+drect(0,j,240,30,200,200,200);
+
+dtext("年",100,60,55,55,55,0,1);
+dtext("月",100,120,55,55,55,0,1);
+dtext("日",100,180,55,55,55,0,1);
+
+YESNO();
+ref(0,0,240,320);
+
+print();
+return 0;
+}
+
+
+int js()
+{
+year=y[0]*100+y[1]*100+y[2]*10+y[3];
+month=m[0]*10+m[1];
+day=d[0]*10+d[1];
+
+return 0;
+}int print()
+{char y1[20],m1[8],d1[8];
+
+if(w>=4)
+sprintf(y1,"%d%d%d%d",y[0],y[1],y[2],y[3]);
+
+else if(w>=3)
+sprintf(y1,"%d%d%d",y[0],y[1],y[2]);
+
+else if(w>=2)
+sprintf(y1,"%d%d",y[0],y[1]);
+
+else if(w>=1)
+sprintf(y1,"%d",y[0]);
+
+if(w>=6)
+sprintf(m1,"%d%d",m[0],m[1]);
+
+else if(w>=5)
+sprintf(m1,"%d",m[0]);
+
+if(w>=7)
+sprintf(d1,"%d%d",d[0],d[1]);
+
+
+else if(w>=8)
+sprintf(d1,"%d",d[0]);
+
+if(1)
+dtext(y1,40,60,15,15,15,0,1);
+
+if(w>=5)
+dtext(m1,40,120,15,15,15,0,1);
+
+if(w>=7&&w<=8)
+dtext(d1,40,180,0,0,0,0,1);
+
+ref(0,0,240,320);
+return 0;
+}

@@ -1,0 +1,94 @@
+#include <base.h>
+
+void rect_text(char *text,int r,int g,int b)
+{
+rectst rect; 
+colorst color;
+rect.x=tw;
+rect.y=th;
+rect.w=SCRW;
+rect.h=SCRH;
+
+color.r=r;
+color.g=g;
+color.b=b;
+dtextex(text,rect.x,rect.y,&rect,&color,2,1);
+}
+
+/*在屏幕上弄彩色的字真正是不可能的，但是可以采用局部刷新的方法模式出来！
+*/
+
+ int th,tw,font=1;
+ textwh("彩",0,font,&th,&tw);
+
+int init()
+{
+ cls(0,0,0);
+ ref(0,0,SCRW,th);
+ int x;
+ for(x=tw;x<=tw*9;x+=5)
+{ sleep(tw+th);
+ dtext(">>>E界作品>>>",tw*2,SCRH/2,x,x*2,x%100,0,font);
+ ref(x,SCRH/2,5,th);
+
+}
+
+for(x=tw;x<=tw*8;x+=5)
+{
+ sleep(th*2);
+ dtext("每天进步一点",tw,SCRH/2+th*2,x,x*2,x%255,0,font);
+ ref(x,SCRH/2+th*2,5,th);
+
+}
+sleep(1000);
+cls(0,0,0);
+ref(0,0,SCRW,SCRH);
+dtext("黄鹤楼",SCRW/2-tw,0,255,255,255,0,font);
+ref(0,0,SCRW,th);
+
+for(int y=th;y<=th*10;y+=th)
+for(x=th;x<=SCRW;x+=tw/2)
+{
+rect_text("
+昔人已乘黄鹤去，
+此地空余黄鹤楼。
+黄鹤一去不复返，
+白云千载空悠悠。
+晴川历历汉阳树，
+芳香萋萋鹦鹉州。
+日幕乡关何处是？
+烟波江上使人愁。",x*2,x-y,x+y);
+ref(x,y,tw/2+1,th);
+}
+
+sleep(3000);
+//cls(0,0,0);
+//ref(0,0,SCRW,SCRH);
+dtext("彩字！看懂了吗？",tw,SCRH-th*2,255,255,0,0,font);
+ref(0,SCRH-th*2,SCRW,th);
+
+return 0;
+}
+
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause()
+{return 0;}
+int resume()
+{return 0;}

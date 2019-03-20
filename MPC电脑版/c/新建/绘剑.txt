@@ -1,0 +1,116 @@
+#include <base.h>
+#define REF ref(0,0,SCRW,SCRH)
+#define txt(text,x,y) dtext(text,x,y,25,25,25,0,1)
+int DB_R=138,DB_G=200,DB_B=200;
+
+int tw,th;
+textwh("½£",0,1,&tw,&th);
+int fx=25,fy=th+10;
+
+int init(void)
+{
+ inits();
+    return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _STAR:
+printscr("c/Ç½Ö½.bmp");       break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}
+
+void inits()
+{
+cls(255,255,255);REF;
+sleep(300);
+cls(0,0,0);REF;
+sleep(300);
+cls(230,230,255);
+REF;
+effsetcon(0,SCRH-15,SCRW,2,DB_R,DB_G,DB_B);
+
+effsetcon(0,0,SCRW,th,DB_R,DB_G,DB_B);
+
+for(int px=-tw*3;px<=(SCRW/2-tw*3);px+=tw/2)
+{
+drect(0,0,SCRW,th,200,200,255);
+effsetcon(0,0,SCRW,th,DB_R,DB_G,DB_B);
+txt("½£>ÆÆ>²Ô>ñ·",px,1);
+REF;
+sleep(300);
+}
+
+for(fx=fx;fx<=SCRW;fx+=60)
+{fy+=10;
+
+//½£±ú
+int r=15;
+for(int x=fx;x<=(fx+5);x++)
+{r++;
+effsetcon(x,fy,1,40,x+r,r*5,r*15);
+REF;
+}
+
+//½£×ø
+r=10;
+for(int y=fy+40;y<=(fy+50);y++)
+{r++;
+effsetcon(fx-20,y,45,1,y+r,r*5,r*10);
+REF;
+}
+
+//½£ÈÐ
+r=0;
+for(x=fx-10;x<=(fx+15);x++)
+{r++;
+effsetcon(x,fy+50,1,100,x+r,x,r*10);
+REF;
+}
+
+//½£¼â
+r=0;
+for(x=fx-10;x<=(fx+15);x++)
+{r++;dline(fx+2,fy+170,x,fy+150,x+r,x,r*10);
+REF;
+}
+
+//ÏÂ·½Èý½Ç
+for(y=SCRH-50;y<=(SCRH-35);y++)
+{dline(fx-10,SCRH-20,fx,y,y,y/10,y/10);
+dline(fx+10,SCRH-20,fx,y,y,y/10,y/10);
+REF;
+}
+
+
+}
+
+
+}
+
+int printscr(char *name)
+{
+int f=open(name,12);
+write(f,getscrbuf(),SCRW*SCRH*2);
+return close(f);
+}

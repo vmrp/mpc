@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MPCrun - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1B4.tmp" with contents
+[
+/nologo /MLd /W1 /Gm /GX /ZI /Od /I "..\include" /I "..\MPCrun\src" /I "..\MPCrun\interpreter\src" /I "..\MPCrun\interpreter\syslib" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "SDK_MOD" /D "SIM_MOD" /Fp"MPCrun___Win32_Debug/MPCrun.pch" /YX /Fo"MPCrun___Win32_Debug/" /Fd"MPCrun___Win32_Debug/" /FD /GZ  /c 
+"D:\SDK1.3\MPCrun\src\main.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1B4.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1B5.tmp" with contents
+[
+/nologo /out:"MPCrun___Win32_Debug\MPCrun.lib" 
+.\MPCrun___Win32_Debug\platform.obj
+.\MPCrun___Win32_Debug\momo.obj
+.\MPCrun___Win32_Debug\clibrary.obj
+.\MPCrun___Win32_Debug\expression.obj
+.\MPCrun___Win32_Debug\heap.obj
+.\MPCrun___Win32_Debug\include.obj
+.\MPCrun___Win32_Debug\lex.obj
+.\MPCrun___Win32_Debug\myfunc.obj
+.\MPCrun___Win32_Debug\parse.obj
+.\MPCrun___Win32_Debug\picoc.obj
+.\MPCrun___Win32_Debug\table.obj
+.\MPCrun___Win32_Debug\type.obj
+.\MPCrun___Win32_Debug\variable.obj
+.\MPCrun___Win32_Debug\m_base.obj
+.\MPCrun___Win32_Debug\m_ctype.obj
+.\MPCrun___Win32_Debug\m_net.obj
+.\MPCrun___Win32_Debug\m_sound.obj
+.\MPCrun___Win32_Debug\main.obj
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1B5.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.c
+Creating library...
+
+
+
+<h3>Results</h3>
+MPCrun.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

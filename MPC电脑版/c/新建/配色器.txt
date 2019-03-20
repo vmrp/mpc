@@ -1,0 +1,162 @@
+#include <base.h>
+#define font 0
+#define v 5
+void REF()
+{ref(0,0,SCRW,SCRH);}
+
+int jm=1,th,tw,x=1,r=0,g=0,b=0,f=timercreate();
+
+textwh("鼎",font,1,&tw,&th);
+
+int init(void)
+{
+loading();
+luo();
+timerstart(f,500,500,"light",1);
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+
+    if(jm==1)switch(p1)
+   {
+   case _SRIGHT:
+   exitapp();break;
+  case _SLEFT:
+  jm=2;gy();break;
+
+  case _UP:
+  case _2:
+  if(x>1)x-=2;ps();
+  break;
+
+  case _DOWN:
+ case _8:
+  if(x<4)x+=2;ps();
+ break;
+
+  case _RIGHT:
+  case _6:
+  if(x==1&&r<=255)r+=v;
+  else if(x==3&&g<=255)g+=v;
+  else if(b<=255)b+=v;
+  ps();break;
+
+ case _4:
+ case _LEFT:
+ if(x==1&&r>0)r-=v;
+ else if(x==3&&g>0)g-=v;
+ else if(b>0)b-=v;
+ ps();break;
+
+
+     }
+ else if(p1==_SRIGHT)
+ {jm=1;luo(); }
+    }
+
+ return 0;
+}
+int pause(void)
+{return 0;}
+int resume(void)
+{
+    return 0;
+}
+void luo()
+{
+if(f==0)
+ {
+ f=timercreate();
+ timerstart(f,500,500,"light",1);
+}
+
+ cls(0,0,0);
+
+drect(0,0,SCRW,th,55,55,55);
+drect(0,SCRH-th,SCRW,th,55,55,55);
+dtext("配色器",SCRW/2-tw,0,255,255,255,font,1);
+dtext("关于",0,SCRH-th,255,255,255,font,1);
+dtext("退出",SCRW-2*tw,SCRH-th,255,255,255,font,1);
+
+ps();
+REF();
+}
+
+void ps()
+{
+drect(tw,th,SCRW,SCRH-th*2,0,0,0);
+
+dtext("红",tw,th*3,255,255,255,0,1);
+dtext("绿",tw,th*5,255,255,255,0,1);
+dtext("蓝",tw,th*7,255,255,255,0,1);
+char *ch=malloc(5);
+sprintf(ch,"%d",r);
+dtext(ch,tw*5,th*3,255,255,255,font,1);
+sprintf(ch,"%d",g);
+dtext(ch,tw*5,th*5,255,255,255,font,1);
+sprintf(ch,"%d",b);
+dtext(ch,tw*5,th*7,255,255,255,font,1);
+
+
+free(ch);
+
+dline(tw*5,th*(3+x),tw*5+tw,th*(3+x),255,255,255);
+
+drect(tw,th*9,SCRW-tw,th,r,g,b);
+
+REF();
+}
+void light(int data)
+{
+int i;
+for(i=1;i<=SCRW;i+=tw*2)
+drect(i,th*12,i+tw,th/2,rand()%256,rand()%256,rand()%256);
+REF();
+
+}
+void exitapp()
+{if(f)timerdel(f);
+exit();
+}
+void gy()
+{ cls(0,0,0);
+
+ if(f)timerdel(f);
+
+rectst rect;
+colorst color;
+rect.x=rect.y=0;
+rect.w=SCRW;
+rect.h=SCRH;
+color.r=color.g=color.b=255;
+
+dtextex("。。。。关于。。。。
+本程序由E界 每天进步一点 制作，
+欢迎下载使用，
+看了如果觉的好的话给个回复吧！
+高看了手勿笑！
+您的支持是我最大的动力！
+官网:wap.mrpej.com
+[右键返回]",rect.x,rect.y,&rect,&color,2,1);
+REF();
+}
+void loading()
+{
+cls(0,0,0);
+dtext("每天进步一点 ",SCRW/2-3*tw,SCRH/2+2*th,255,255,255,font,1);
+REF();
+drect(0,SCRH/2,SCRW,th,255,55,255);
+
+
+int xx;
+for(xx=10;x<SCRW;xx+=10)
+{if(xx>SCRW)break;
+ref(0,0,xx,SCRH);
+}
+
+
+}

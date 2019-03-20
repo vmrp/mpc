@@ -1,0 +1,51 @@
+/*输出9乘9口决*/
+
+#include <base.h>
+#include "c/LZB.txt"
+
+int init(void)
+{
+int i,j;
+printf("自答:\n");
+for(i=1;i<10;i++)
+ { for(j=1;j<10;j++)
+{if(j==1)printf("\n");
+printf("%dx%d=%d→",i,j,j*i);
+ }
+}
+
+printf("\n标准答案:\n");
+for(i=1;i<=9;i++)
+{
+for(j=1;j<=9;j++)
+{if(j==1)printf("\n");
+printf("%dx%d=%d→",i,j,i*j);
+}
+}
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+  {
+   switch(p1)
+    {
+    case _SRIGHT:
+     exit();
+    break; 
+       }
+   }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

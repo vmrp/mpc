@@ -1,0 +1,48 @@
+#include <base.h>
+#include "c/LZB.txt"
+
+int swap(int *p1,int *p2)
+{
+int temp=*p1;*p1=*p2;
+*p2=temp;
+return 0;
+}
+
+
+
+int init(void)
+{
+int a=10,b=25,*p1,*p2;
+p1=&a;p2=&b;
+if(a<b)
+swap(p1,p2);
+printf("\n%d,%d",a,b);
+ return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+   {
+ case _SRIGHT:
+tc(10);exit();
+           break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

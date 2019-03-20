@@ -1,0 +1,11 @@
+#define RES_SOUND_FILENAME_LEN 6
+
+typedef struct SOUND_INFO_T{
+char filename[RES_SOUND_FILENAME_LEN];
+BYTE type;
+}SOUND_INFO, *PSOUND_INFO;
+
+static const SOUND_INFO soundsInfo[RES_SOUND_COUNT] = 
+{
+{"A.MID", MR_SOUND_MIDI},
+};

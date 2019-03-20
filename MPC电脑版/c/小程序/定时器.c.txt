@@ -1,0 +1,64 @@
+#include <base.h>
+
+int timer;
+//timer定时器句炳
+
+
+int init(void)
+{
+ timer=timercreate();
+//创建定时器
+int time=1,data=1,mode=1;
+
+/*
+time定时器循环间隔时间
+
+data定时器参数
+
+mode循环模式
+取值:
+0循环一次
+1一直循环
+
+*/
+ timerstart(timer,time,data,"F",mode);
+//启动定时器
+return 0;
+}
+
+
+//函数,定时器函数必须要有参数,否定不会运行*/
+void F(int data)
+{
+ cls(rand()%255,rand()%255,rand()%255);
+//刷屏
+ ref(0,0,SCRW,SCRH);
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+ /*退出前删除定时器*/
+       timerdel(timer);     exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

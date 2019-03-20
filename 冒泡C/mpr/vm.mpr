@@ -1,0 +1,45 @@
+[information]
+projectname=Helloworld.mpr
+filename=picoc.mrp
+appname=picoc
+appid=111210
+version=1001
+visible=1
+cpu=3
+vendor=SkyMobi
+description=This is HelloWorld!
+include=${MRPBUILDER_HOME}..\include\,${MRPBUILDER_HOME}..\include\plugins\, ..\interpreter\src\,..\interpreter\syslib\, ..\src\
+output_format=lib
+config=mtk
+#,spr
+
+
+[config_mtk]
+output=..\lib\mtk_vm.lib
+bmp_mode=normal
+
+[config_spr]
+output=lib\spr_vm.lib
+bmp_mode=spreadtrum
+
+
+[files]
+file100 = ..\interpreter\src\myfunc.c
+file101 = ..\interpreter\src\picoc.c
+file102 = ..\interpreter\src\platform.c
+file103 = ..\interpreter\src\table.c
+file104 = ..\interpreter\src\type.c
+file105 = ..\interpreter\src\variable.c
+file106 = ..\interpreter\src\parse.c
+file107 = ..\interpreter\src\lex.c
+file108 = ..\interpreter\src\include.c
+file109 = ..\interpreter\src\heap.c
+file110 = ..\interpreter\src\expression.c
+file111 = ..\interpreter\src\clibrary.c
+file112 = ..\interpreter\syslib\m_base.c
+file113 = ..\interpreter\syslib\m_ctype.c
+file114 = ..\interpreter\syslib\m_sound.c
+file115 = ..\interpreter\syslib\m_net.c
+
+
+

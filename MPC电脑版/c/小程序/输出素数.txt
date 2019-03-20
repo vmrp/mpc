@@ -1,0 +1,48 @@
+#include <base.h>
+#include "c/include/LZB.txt"
+#define m 100
+
+int init()
+{
+int m1,i;
+printf("%d以内素数有:\n\n",m);
+
+
+for(m1=1;m1<m;m1++)
+
+for(i=2;i<m1;i++)
+{
+if(m1%i==0)break;
+
+else if(i==(m1-1))
+printf("%d ",m1);
+
+}
+
+exit(); return 0;
+}
+int event(int type, int p1, int p2)
+{    if(KY_DOWN == type)
+    {
+        switch(p1)
+   {
+ case _SRIGHT:
+tc(10);exit();
+           break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

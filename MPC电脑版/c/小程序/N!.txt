@@ -1,0 +1,32 @@
+#include <base.h>
+
+int fact(int n)
+{
+if(n<=1)return(1);
+else return(n*fact(n-1));
+}
+
+
+int init(void)
+{
+int n;
+printf("%d\n",(n=5));
+
+int f=fact(n);
+
+printf("�ݹ鷨%d!=%d",n,f);
+
+int i;f=1;
+for(i=1;i<=n;i++)
+f=i*f;
+printf("\n%d",f);
+exit();
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{return 0;}
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}

@@ -1,0 +1,49 @@
+/*题目:企业发放的奖金根据利润提成;利润低于10万时奖金提10‰,10万到20万时,低于10万部分提10‰,高于10万提7.5‰,20万到40万时提5‰;40到60万提3‰;60到100万题1.5‰;高于100万提1‰*/
+#define a 66000
+#include <base.h>
+#include "c/LZB.txt"
+
+int init(void)
+{
+int a,j,j1,j2,j4,j6,j10;
+j1=10000;j2=j1+75000;j4=j2+100000;j6=j4+60000;
+if(a<100000)
+j=a*1/10
+else if(a<=200000)
+j=j1+
+(a-100000)*75/1000;
+else if(a<=400000)
+j=j2+(a-
+200000)*5/100;
+else if(a<600000)
+j=j4+(a-400000)*3/100;
+else if(a<1000000)j=j6+(a-600000)*15/1000;
+else j=j10+(a-1000000)/100;
+printf("总奖金为%d",j);
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

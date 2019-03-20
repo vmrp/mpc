@@ -1,0 +1,72 @@
+local char *find_func(char *name);
+
+local void eval_exp(int *value);
+local void eval_exp0(int *value);
+local void eval_exp1(int *value);
+local void eval_exp2(int *value);
+local void eval_exp3(int *value);
+local void eval_exp4(int *value);
+local void eval_exp5(int *value);
+local void atom(int *value);
+local void sntx_err(int error);
+
+local void call(void);
+local void prescan(void);
+local void decl_local(void);
+local void exec_if(void);
+local void exec_for(void);
+local void exec_while(void);
+local void exec_do(void);
+local void find_eob(void);
+local void get_params(void);
+local void interp_block(void);
+local void func_ret(void);
+local void local_push(var_type i);
+local int* var_point(char *s);
+
+local int look_up(char *s);
+local int get_token(void);
+local int internal_func(char *s);
+local int is_var(char *s);
+local int find_const(char *s);
+local int call_point(void);
+local int call_putch(void);
+local int call_srect(void);
+local int call_print(void);
+local int call_refresh(void);
+local int call_cls(void);
+local int call_printscr(void);
+local int call_line(void);
+local int call_rand(void);
+local int call_drawtxt(void);
+local int call_draw565bmp(void);
+local int call_sleep(void);
+local int call_strh(void);
+local int call_strw(void);
+local int call_rect(void);
+local int call_effsetcon(void);
+local int call_img(void);
+local int call_iprint(void);
+local int call_sms(void);
+local int call_playsound(void);
+local int call_stopsound(void);
+local int call_exit(void);
+local int call_timerStart(void);
+local int call_timerStop(void);
+local int call_runmrp(void);
+local int call_mkdir(void);
+local int call_remove(void);
+local int call_open(void);
+local int call_close(void);
+local int call_read(void);
+local int call_seek(void);
+local int call_write(void);
+local int call_getlen(void);
+local int call_rename(void);
+
+
+
+local int func_in(void);
+local int func_out(void);
+local int GetNumPram(char *str, int pram[], int pramlen);
+local int GetStrPram(char *str[], int len);

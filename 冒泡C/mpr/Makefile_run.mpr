@@ -1,0 +1,33 @@
+[information]
+projectname=application.mpr
+filename=mrcc.mrp
+appname=冒泡C直接运行
+appid=131010
+version=1003
+visible=1
+cpu=3
+vendor=默水瓶
+description=冒泡C直接运行mpcrun.txt
+include=${MRPBUILDER_HOME}..\include\, ${MRPBUILDER_HOME}..\include\plugins,..\sfw\,..\sfw\other, ..\sfw\res\, ..\sfw\common\, ..\sfw\gui\, ..\sfw\controls\, ..\sfw\net\, ..\src\
+output_format=mrp
+config=mtk176
+
+[config_mtk176]
+output=..\bin_run\mtk.mrp
+bmp_mode=normal
+
+
+[files]
+file06 = ..\lib\mtk176_run.lib
+file10 = ..\lib\mtk_vm.lib
+
+
+
+
+
+
+
+
+
+
+

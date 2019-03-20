@@ -1,0 +1,3 @@
+lib.mpr  生成与mrp框架相关的代码块
+makefile.mpr 将代码块，资源文件打包到一起生成最终的mrp
+vm.mpr   生成解释器代码

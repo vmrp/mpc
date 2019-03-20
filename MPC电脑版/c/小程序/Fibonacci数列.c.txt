@@ -1,0 +1,57 @@
+/*Fibonacci数列
+by:每天进步一点
+QQ:643552878
+Fibonacci数列:
+1、1、2、3、5、8、13、31…
+前两列是1，后面每个数是前两列数之和。
+
+*/
+
+#include <base.h>
+
+int init(void)
+{
+ uint32 len=10;
+//输出数列长度
+ printf("Fibonacci数列\n\n前%d项\n",len);
+ Fibonacci(len);
+ exit();
+ return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN==type)
+    {
+ switch(p1)
+  {
+  case _SRIGHT:
+  exit();break;
+  case _1:
+            break;
+
+   }
+  }
+ return 0;
+}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}
+
+
+void Fibonacci(uint32 len)
+{
+ int l=len*sizeof(uint32);
+ uint32 *F=malloc(l);
+ memset(F,NULL,l);
+ printf("%d、%d",F[0]=1,F[1]=1);
+
+ for(int i=2;i<len;i++)
+ { F[i]=F[i-1]+F[i-2];
+  printf("%d、",F[i]);
+ }
+ free(F);
+
+}

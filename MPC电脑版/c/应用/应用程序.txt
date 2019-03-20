@@ -1,0 +1,354 @@
+/*初使密码为153340
+;可以自已修改，密码是用的简单的加密！算法在mi_ma文件理！
+*/
+
+
+
+#include <base.h>
+#define KEY 698805
+
+#include "c/应用/LZB.txt"
+#include "c/应用/版权.txt"
+
+#include "c/应用/function_.txt"
+//程序界面图
+
+#include "c/应用/function.txt"
+//程序启动
+
+#include "c/应用/mi_ma.txt"//密码
+
+#include "c/应用/sjjm.txt"
+//密码加密
+
+
+int r=255,g=255,b=255;
+//文字皮肤
+
+int r_=0,g_=0,b_=0;
+//背景皮肤
+
+int jm=1,jm_=1;
+//界面控制
+int jm_1=1;
+//控制一些代码是否运行
+
+int mi_c;
+mima_c();
+//密码次
+
+int ma,mi=1,mi_s,mi_[6];
+//密码
+
+int p_0,p_1;
+//画图坐标
+
+cp();
+
+
+int init()
+{
+shuhua();
+//进入密码输入画面
+return 0;
+}
+
+int event(int type, int p0,int p1)
+{
+if(mi!=ma&&MS_DOWN==type)
+//密码触摸输入
+{
+if(p0<=70&&p1>=280)shu_ru();
+
+if(p0>280&&p1>=280)
+{jm_=1;yesexit();}
+
+
+if(p1>160&&p1<=205)
+{
+if(p0<50)shu(0);
+else if(p0<100)shu(1);
+else if(p0<150)shu(2);
+else if(p0<200)shu(3);
+else if(p0<240)shu(4);
+}
+
+else if(p1>205&&p1<250)
+{
+if(p0<50)shu(5);
+else if(p0<100)shu(6);
+else if(p0<150)shu(7);
+else if(p0<200)shu(8);
+else if(p0<240)shu(9);
+}
+
+
+}
+
+else if(mi!=ma&&KY_DOWN==type)
+//密码输入
+{
+switch(p0)
+{
+case _1:shu(1);break;
+case _2:shu(2);break;
+case _3:shu(3);break;
+case _4:shu(4);break;
+case _5:shu(5);break;
+case _6:shu(6);break;
+case _7:shu(7);break;
+case _8:shu(8);break;
+case _9:shu(9);break;
+case _0:shu(0);break; 
+case _SLEFT:
+shu_ru();break;
+case _SRIGHT:
+q_exit();break;
+//进入确认退出界面
+
+case _POUND:
+if(mi_s!=0)mi_s--
+;break;
+}
+}
+
+else if((MS_DOWN==type||MS_MOVE==type)&&(jm==3)&&(jm_==2))
+//画图界面
+{
+if((p_0==0&&p_1==0)||(type==MS_DOWN))
+{p_0=p0;p_1=p1;}
+
+if(p1>40&&p1<=290)
+{
+dline(p0,p1,p_0,p_1,255,255,255);
+p_0=p0;p_1=p1;
+}
+
+
+
+else if(p0>=100&&p0<=140&&p1>280&&p1<=320)
+{
+cls(0,0,0);
+function3();
+}
+if(p0>=190&&p0<=240&&p1>=280&&p1<=320)
+{
+jm_=1;
+jm_1=1;
+function();
+
+}
+ref(0,0,240,280);
+
+}
+
+
+else if(KY_DOWN==type&&jm_==-1)
+//退出控制界面
+{
+switch(p0)
+{
+case _SLEFT:q_exit();
+break;
+
+case _SRIGHT:
+jm_=1;
+function();break;
+
+}
+}
+
+
+else if(mi==ma&&MS_DOWN==type&&jm_==1)
+//主界面触摸
+{
+if(p1>40&&p1<=80)
+{
+if(p0<=24)jm=1;
+else if(p0<48)jm=2;
+else if(p0<72)jm=3;
+else if(p0<96)jm=4;
+else if(p0<120)jm=5;
+else if(p0<144)jm=6;
+else if(p0<168)jm=7;
+else if(p0<192)jm=8;
+else if(p0<216)jm=9;
+else if(p0<240)jm=10;
+function();
+}
+
+
+if(p0<=70&&p1>=280)sleft();
+if(p0>=280&&p1>=280)
+{jm_=-1;yesexit();}
+
+}
+
+else if(mi==ma&&KY_DOWN == type&&jm_==1)
+{
+ switch(p0)
+{
+case _SRIGHT:jm_=-1;
+yesexit();break;
+
+case _1:jm=1;
+function();break;
+
+case _2:jm=2;
+function();break;
+
+case _3:jm=3;
+function();break;
+
+case _4:jm=4;
+function();break;
+
+case _5:jm=5;
+function();break;
+
+case _6:jm=6;
+function();break;
+
+case _7:jm=7;
+function();break;
+
+case _8:jm=8;
+function();break;
+
+case _9:jm=9;
+function();break;
+ 
+case _0:jm=10;
+function();break;
+
+case _SLEFT:
+sleft();
+break;
+
+case _LEFT:
+if(jm>1)jm--;function();break;
+
+case _RIGHT:
+if(jm<10)jm++;function();break;
+}
+}
+
+else if(KY_DOWN==type&&jm_==2&&mi==ma)
+{
+switch(p0)
+{
+case _LEFT:
+if(jm==6)
+{ jm_1=1;function6(); } break;
+//时间刷新
+
+
+case _SRIGHT:
+jm_=1;function();
+break;
+//程序界面返回
+
+}
+}
+return 0;
+}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}
+
+
+
+
+void function()
+//主界面
+{
+int i;
+if(jm_1)
+{
+cls(r_,g_,b_);
+for(i=0;i<=40;i++)
+{
+dline(0,320-i,240,320-i,i*2,i+10,i);
+dline(0,i,240,i,i*2,i+10,i);
+}
+dtext("应用程序3.3",80,5,r,g,b,0,1);
+
+time(100);
+
+for(i=0;i<=240;i+=24)
+drect(i,40,24,50,i+10,i-10,i);
+char Su[3];
+int i2;
+for(i=1;i<=10;i++)
+{
+sprintf(Su,"%d",i);
+dtext(Su,(i-1)*24,45,255,255,255,0,1);
+}
+
+}
+
+/*
+i=jm-1;
+drect(i,40,(i+1)*24,50,0,255,0);
+*/
+
+dtext("启动",0,290,r,g,b,0,1);
+dtext("退出",190,290,r,g,b,0,1);
+switch(jm)
+{
+case 1:function_1();break;
+case 2:function_2();break;
+case 3:function_3();break;
+case 4:function_4();break;
+case 5:function_5();break;
+case 6:function_6();break;
+case 7:function_7();break;
+case 8:function_8();break;
+case 9:function_9();break;
+case 10:function_10();break;
+}
+
+char S[2];
+sprintf(S,"%d",jm);
+dtext(S,5,93,0,255,255,0,1);
+
+ref(0,0,240,320);
+}
+
+
+
+void sleft()
+//启动相应程序
+{
+switch(jm)
+{
+case 1:function1();break;
+case 2:function2();break;
+case 3:function3();break;
+case 4:function4();break;
+case 5:function5();break;
+case 6:function6();break;
+case 7:function7();break;
+case 8:function8();break;
+case 9:function9();break;
+case 10:function10();break;
+}
+if(jm!=10)
+{jm_1=1;jm_=2;}
+
+}
+
+
+void yesexit()
+//确定退出界面
+{
+effsetcon(0,0,240,320,100,100,100);
+drect(0,250,240,70,r_,g_,b_);
+dtext("确认退出？",60,255,r,g,b,0,1);
+dtext("确定",0,290,r,g,b,0,1);
+dtext("取消",190,290,r,g,b,0,1);
+
+ref(0,0,240,320);jm_1=1;
+}

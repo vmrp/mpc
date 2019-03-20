@@ -1,0 +1,125 @@
+int a,jm=1,cj[2],w;
+
+#include <base.h>
+#include "c/天天/include/LZB.txt"
+
+int c(void)
+{ cls(rand()%200,rand()%255,rand()%160);
+return 0;
+}
+int r(void)
+{ref(0,0,240,320);
+return 0;
+}
+int L(void)
+{ dtext("骆志彬评论^_^",50,100,0,0,0,0,0);ref(0,0,240,320);return 0;
+}
+
+int P1(void)
+{ c();dtext("E！怎么没及格！",5,50,255,255,255,0,0);r();L();return 0;
+}
+int P2(void)
+{c();dtext("评分:D&一般！",9,50,255,255,255,0,0);r();L();return 0;
+}
+int P3(void)
+{c();dtext("评分:C&继续加油！",10,50,255,255,255,0,0);r();L();return 0;
+}
+int P4(void)
+{c();dtext("评分:B&优秀",9,50,255,255,255,0,0);r();L();return 0;
+}
+int P5(void)
+{ c();dtext("评分:A非常好！&",9,50,255,255,255,0,0);r();L();return 0;
+}
+int Z(void)
+{c();dtext("数要于小100笨蛋啊！",20,20,255,255,255,0,0);r();L();return 0;
+}
+
+int init()
+{
+if(jm==2)
+{
+shake(a);
+if(a<=60)P1();
+else if(a>60&&a<=70)P2();
+else if(a>70&&a<=80)P3();
+else if(a>80&&a<=90)P4();
+else if(a>90&&a<=100)P5();
+else Z;
+
+dtext("评委结果:",80,0,0,0,0,0,1);
+dtext("按#再输,右软键退出",20,200,0,0,0,0,1);
+ref(0,0,240,320);
+}
+if(jm==1)shuru();
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN == type)
+{switch(p1)
+ {
+case _SRIGHT:
+over();tc(5);exit();break;
+
+case _0:cheng(0);break;
+case _1:cheng(1);break;
+case _2:cheng(2);break;
+case _3:cheng(3);break;
+case _4:cheng(4);break;
+case _5:cheng(5);break;
+case _6:cheng(6);break;
+case _7:cheng(7);break;
+case _8:cheng(8);break;
+case _9:cheng(9);break;
+case _POUND:jm=1;w=0;
+init();break;
+
+case _SLEFT:if(jm==1)cjz();break;
+}}
+return 0;}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}
+
+int shuru()
+{
+cls(0,0,0);
+dtext("输入你的成绩吧！",10,150,150,150,200,0,1);
+drect(0,180,240,30,55,55,55);
+YESNO();
+ref(0,0,240,320);
+return 0;
+}
+
+int cheng(int t)
+{w++;
+if(w==1)cj[0]=t;
+if(w==2)cj[1]=t;
+
+pintf();
+return 0;
+}
+
+int cjz()
+{
+if(jm==1&&w==2)
+{a=cj[0]*10+cj[1];
+jm=2;
+init();}
+return 0;
+}
+
+int pintf()
+{char S[10];
+if(w==1)
+sprintf(S,"%d",cj[0]);
+if(w==2)
+sprintf(S,"%d%d",cj[0],cj[1]);
+
+dtext(S,0,185,25,55,255,0,1);
+ref(0,0,240,320);
+return 0;
+}

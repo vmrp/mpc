@@ -1,0 +1,44 @@
+/*有数字:1.2.3.4,能组成多少个不同的三位数*/
+#include <base.h>
+
+int init(void)
+{
+int i,j,k,z=0;
+for(i=1;i<5;i++)
+for(j=1;j<5;j++)
+for(k=1;k<5;k++)
+{
+if(i!=k&&i!=j&&j!=k) 
+{
+printf("%d%d%d→",i,j,k);
+z+=1;
+}
+}
+printf("\n一共可组成%d个",z);
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

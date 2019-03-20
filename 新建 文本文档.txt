@@ -1,0 +1,11 @@
+编译mrp必需安装ADS1.2和SKYSDK然后将mrpbuilder.NET.exe替换掉C:\skysdk\compiler\mrpbuilder.NET.exe
+
+安装VS2005或VC6.0 （推荐使用VS2005 + vassistx）
+
+MPC电脑版其实就是VC6.0的DEBUG文件：simulator.exe
+
+
+
+在VC6.0下编译需要定义宏 _MPC_VC6_
+冒泡C\vc6\vcproj
+不应该清除VC6的DEBUG文件夹，否则VC6的模拟器会运行不正常

@@ -1,0 +1,65 @@
+#include <base.h>
+
+int init()
+{
+int a=8,b=12;
+cls(0,0,0);
+char A[20];
+sprintf(A,"%d和%d的最大公约数:",a,b);
+dtext(A,0,150,255,255,255,0,1);
+
+sprintf(A,"%d和%d最小公倍数为",a,b);
+dtext(A,0,70,255,255,0,0,1);
+
+if(a<b)
+{int t=a;a=b;b=t;}
+
+if(a%b==0)
+sprintf(A,"%d",a);
+
+else 
+{
+int S;
+for(S=b;S>=1;S--)
+if(a%S==0&&b%S==0)
+{
+sprintf(A,"%d",a*b/S);
+break;
+}
+}
+
+
+dtext(A,10,100,255,255,0,0,1);
+
+int r=a%b;
+if(r!=0)
+{
+while(r!=0)
+{ a=b;b=r;r=a%b; }
+}
+
+sprintf(A,"%d",b);
+ 
+dtext(A,0,180,255,255,255,0,1);
+
+ref(0,0,240,320);
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+    }}return 0;
+}
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}

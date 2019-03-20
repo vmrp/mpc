@@ -1,0 +1,141 @@
+void text(char *p,int x,int y,int r,int g,int b,int i)
+{ int j;
+
+for(j=0;j<i;j++)
+dtext(p,x+j,y+j,r,g,b,0,1);
+}
+
+void re()
+{ref(0,0,240,320);}
+
+
+/*进度载入
+int zr()
+{
+int Z,B=0,luo=110;
+cls(0,0,0);
+ref(0,0,240,320);
+for(Z=220;Z>=110&&B<=110;Z-=5)
+{
+drect(0,0,240,320,0,0,0);dtext("骆志彬~",10,Z,Z+20,Z-20,Z,0,1);
+B=B+5;
+dtext("骆志彬~",10,B,B,B+20,B-10,0,1);
+
+if(luo!=100)
+{luo--;
+dtext("设计制作",luo,110,rand()%200,rand()%255,rand()%255,0,1);
+}
+ref(0,0,240,320);
+}
+
+cls(0,0,0);
+dtext("骆志彬~设计制作",10,110,255,255,255,0,1);
+ref(0,0,240,320);
+
+
+
+int x_,y_;y_=110;for(x_=10;x_<=50;x_+=2)
+{y_+=2;
+dtext("骆志彬~设计制作",x_,y_,205,66,90,0,1);
+ref(0,0,240,320);
+}
+dtext("骆志彬~设计制作",x_,y_,255,255,0,0,1);
+ref(0,0,240,320);
+sleep(100);
+return 0;
+}
+
+int zr2()
+{int L;
+cls(0,0,0);
+dtext("载入…",99,0,255,255,255,0,1);
+drect(0,50,240,50,240,0,0);
+ref(0,0,240,320);
+drect(0,50,240,50,50,255,255);
+for(L=1;L<=240;L++)
+ref(0,50,L,50);cls(9,9,9);
+dtext("OK!载入完成",50,100,255,255,255,0,1);
+ref(0,0,240,320);
+return 0;
+}
+
+*/
+
+int tc(int g)
+{
+int k;cls(0,0,0);
+for(k=0;k<=240;k+=g)
+ref(0,0,k,320);
+return 0;
+}
+
+int zwg(int jj)
+{cls(0,0,0);
+int i;
+for(i=16;i<=240;i+=jj)
+dline(i,0,i,320,255,255,255);
+for(i=16;i<=320;i+=jj)
+dline(0,i,240,i,i,255,255);
+ref(0,0,240,320);
+return 0;
+}
+
+int over()
+{
+int i,i2; cls(0,0,0);
+for(i=3;i>=0;i--)
+{cls(0,0,0);
+sleep(600);
+i2=i;
+char t[25];
+sprintf(t,"%d秒后退出……",i2);
+dtext(t,50,100,255,255,255,0,1);
+ref(0,0,240,320);
+}
+return 0;
+}
+
+int yesover()
+//确认退出？
+{
+
+drect(0,250,240,70,55,55,55);
+dtext("确定退出?",10,255,100,100,100,0,1);
+YESNO();
+return 0;
+}
+
+int YESNO()
+{
+dtext("确定",0,290,100,100,100,0,1);
+dtext("退出",190,290,100,100,100,0,1);
+ref(0,0,240,320);
+return 0;
+}
+
+
+
+
+
+void exit_()
+{
+cls(0,0,0);
+
+dtext("完成！",5,100,255,255,0,0,1);
+ref(0,0,240,320);
+
+
+sleep(1000);
+
+exit();
+}
+
+
+//截图
+
+int printscr(char *name)
+{
+  uint16 *scrf = getscrbuf();
+  int f = open(name, 12);
+  write(f, scrf, SCRW*SCRH*2);
+  return close(f);}

@@ -1,0 +1,78 @@
+#include <base.h>
+
+int timer[3];
+int a,b=100,c=50,d=200;
+
+int EVENT;
+
+void timer0(int data)
+{
+    
+   cls(0,0,0);
+if(EVENT == _UP)
+{b-=20;
+if(b <=0 ){EVENT=_DOWN;}
+}
+if(EVENT == _DOWN)
+{b+=20;
+if(b >= 320){EVENT=_UP;}
+}
+if(EVENT == _LEFT)
+{c-=20;
+if(c <= 0){EVENT=_RIGHT;}
+
+
+}
+if(EVENT == _RIGHT)
+{
+c+=20;
+if(c+150>=240){EVENT =_LEFT; }
+}
+drect(c,b,150,1,255,255,255);
+    ref(0,0,SCRW,SCRH);
+ }
+int init()
+{
+   /*定义定时器*/ timer[0]=timercreate();
+/*启动定时器*/    
+timerstart(timer[0],100,1234,"timer0",1);
+    return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {EVENT=p1;
+        switch(p1)
+        {
+        case _SRIGHT:
+            exitapp();
+            break;
+        case _1:
+EVENT=0;
+            break;
+        case _2:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}
+/*必须严格管理定时器*/
+int exitapp()
+{/*删除定时器*/
+    timerdel(timer[0]);
+    /*退出*/
+    exit();
+    return 0;
+}

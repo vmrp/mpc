@@ -1,0 +1,82 @@
+#include <base.h>
+
+int init(void)
+{
+gz(5,138,138,138);
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}
+
+void gz(int i,int r,int g,int b)
+{
+int j;
+for(j=36;j<=240;j+=12)
+{
+//
+if(j>200)j-=j/24;
+
+cls(0,0,0);
+drect(SCRW-j,10,220,300,55,55,55);
+dtext("<--º¯ÊýÍ¼Ïñ",SCRW-j+SCRW/2-50,160,255,255,0,0,1);
+ref(0,0,SCRW,SCRH);
+}
+
+cls(55,55,55);
+int x,y;
+
+for(x=0;x<=240;x=x+i*3)
+dline(x,0,x,320,r,g,b);
+
+for(y=0;y<=320;y=y+i*4)
+dline(0,y,240,y,r,g,b);
+
+
+dline(SCRW/2,0,SCRW/2,SCRH,r+100,g+100,b+100);
+dline(0,SCRH/2,SCRW,SCRH/2,r+100,g+100,b+100);
+
+
+int k=1000;
+for(x=-(SCRW/2);x<=SCRW/2;x++)
+{
+if(x !=0)dpointex(x+SCRW/2,k/x+SCRH/2,255,2,255);
+
+dpointex(x+SCRW/2,-(x*x)+SCRH/2,255,255,255);
+
+dpointex(x+SCRW/2,x+2+SCRH/2,255,255,2);
+
+//dpointex(x+SCRW/2,x*x*x+10000+SCRH/2,2,255,255);
+
+
+ref(0,0,SCRW,SCRH);
+}
+
+
+
+ref(0,0,SCRW,SCRH);
+}

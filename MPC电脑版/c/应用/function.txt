@@ -1,0 +1,450 @@
+void function10()
+//设置
+{
+switch(1)
+{
+case (r==255&&g==255&&b==255):
+{r=255;g=255;b=0;}
+break;
+
+case (r=255&&g==255&&b==0):
+r=0;g=b=255;break;
+
+case (r==0&&g==255&&b==255):
+{r=0;g=0;b=255;}break;
+
+case (r==0&&g==0&&b==255):
+{r=255;g=0;b=255;}
+break;
+
+case (r==255&&g==0&&b==255):
+{r=0;g=255;b=0;}
+break;
+
+case (r==0&&g==255&&b==0):
+{r=255;g=0;b=0;}
+break;
+
+case (r==255&&g==0&&b==0):
+{r=255;g=255;b=255;}
+break;
+
+case 1:r=g=b=255; break;
+}
+
+jm_1=jm_=1;
+function();
+
+}
+
+void function1()
+//计算器
+{
+zwsx();
+jm_=2;
+//使能返回主界面
+}
+
+void function2()
+//MP3
+{
+
+zwsx();
+jm_=2;
+}
+
+void function3()
+//画图
+{
+int i; cls(0,0,0);
+
+for(i=1;i<=40;i++)
+{
+dline(0,i,240,i,i*2,i+10,i);
+dline(0,320-i,240,320-i,i*2,i+10,i);
+}
+dtext("画图本",80,5,r,g,b,0,1);
+time(5);
+dtext("清屏",100,290,r,g,b,0,1);
+dtext("返回",190,290,r,g,b,0,1);
+ref(0,0,240,320);
+
+
+/*
+if(jm_h==0)
+{
+drect(0,0,100,320,0,150,55);
+rectst rect;
+rect.y=7;rect.y=0;
+rect.w=100;rect.h=240;
+colorst color;
+color.r=r;color.g=g;
+color.b=b;
+char *p="";
+
+dtextex(p,7,0,&rect,&color,0,1);
+
+drec(0,h_y,7,15,0,0,0);
+
+}
+*/
+
+ref(0,0,240,320);
+}
+
+
+void function4()
+//函数图像
+{
+cls(0,0,0);
+int i;
+for(i=1;i<=40;i++)
+{
+dline(0,i,240,i,i*2,i+10,i);
+dline(0,320-i,240,320-i,i*2,i+10,i);
+}
+dtext("函数图像",80,5,r,g,b,0,1);
+dtext("返回",190,290,r,g,b,0,1);
+time(100);
+dline(120,0,120,320,255,255,255);
+dline(0,160,240,160,255,255,255);
+
+int x;
+for(x=-120;x<=120;x++)
+{
+dpointex(x+120,2*x+161,255,255,0);
+dpointex(x+120,x*(x+4)+150,0,255,0);
+}
+for(x=1;x<=240;x+=2)
+ref(0,0,x,320);
+jm_=2;
+}
+
+typedef struct
+//时间
+{
+uint16 year;
+uint8  month;
+uint8  day;
+uint8  hour;
+uint8  minute;
+uint8  second;
+}mr_datetime;
+
+mr_datetime date;
+
+
+void function6()
+//待机模式
+{img("tu.jpg",0,0);
+
+int i;
+for(i=0;i<=40;i++)
+{ dline(0,i,240,i,i*2,i+10,i);
+dline(0,320-i,240,320-i,i*2,i+10,i);
+}
+dtext("待机模式",80,5,r,g,b,0,1);
+
+getdatetime(&date);
+char time[20];
+
+sprintf(time,"%d年%d月%d日",date.year,date.month,date.day);
+dtext(time,50,100,r,g,b,0,1);
+sprintf(time,"%d : %d",date.hour,date.minute);
+dtext(time,80,150,r,g,b,0,1);
+dtext("刷新",0,290,r,g,b,0,1);
+dtext("返回",180,290,r,g,b,0,1);
+ref(0,0,240,320);
+jm_=2;
+}
+
+
+int function7()
+//文字图形变化
+{
+int i,i2;
+
+for(i=1;i<=140;i+=4)
+{
+cls(0,0,0);
+dtext("骆志彬…设计制作",20,i,i+5,i-5,i,0,1);
+dtext("接下来就是见证奇迹",0,320-i,i-5,i+5,i,0,1);
+dtext("的时刻！！！",0,320-i+30,i-5,i+5,i,0,1);
+ref(0,0,240,320);
+if(i==140)sleep(600);
+}
+
+cls(0,0,0);
+for(i=320;i>=80;i-=4)
+{
+cls(0,0,0);
+dtext("QQ:1533050408",20,320-i-25,255,255,0,0,1);
+dtext("QQ:643552878",20,i+25,255,255,0,0,1);
+dtext("QQ:297446122",20,80,255,255,0,0,1);
+ref(0,0,240,320);
+}
+sleep(1200);
+
+
+
+cls(0,0,0);
+dtext("图形变化",80,260,0,255,255,0,1);
+int a;
+for(a=0;a<120;a=a+3)
+{
+dline(120,120,a+120,0,a+a,125,155);
+dline(120,120,240,a+120,a+a,125,155);
+dline(120,120,-a+120,240,a+a,125,155);
+dline(120,120,0,-a+120,a+a,125,155);
+ref(0,0,240,320);
+}      
+for(a=0;a<120;a=a+1)
+{
+dline(120,120,a+120,0,a+a,125,155);
+dline(120,120,240,a+120,a+a,125,155);
+dline(120,120,-a+120,240,a+a,125,155);
+dline(120,120,0,-a+120,a+a,125,155);
+ref(0,0,240,320);
+}      
+
+for(a=0;a<120;a+=3)
+{
+dline(120,120,-a+120,0,a+a,125,155);
+dline(120,120,240,-a+120,a+a,125,155);
+dline(120,120,a+120,240,a+a,125,155);
+dline(120,120,0,a+120,a+a,125,155);
+ref(0,0,240,320);
+}
+
+for(a=0;a<120;a=a+1)
+{
+dline(120,120,-a+120,0,a+a,255,a+a);
+dline(120,120,240,-a+120,a+a,255,a+a);
+dline(120,120,a+120,240,a+a,255,a+a);
+dline(120,120,0,a+120,a+a,255,a+a);
+ref(0,0,240,320);}
+
+drect(0,0,240,320,0,255,255);
+sleep(600);
+for(i=0;i<=240;i+=2)
+ref(0,0,240,i);
+
+
+
+
+cls(0,0,0); 
+int x,y,j;
+for(x=0;x<=240;x+=40)
+for(y=320;y>=-40;y-=35)
+{
+dtext("^",x,y,255,255,0,0,1);
+dtext("| |",x,y+9,255,255,0,0,1);
+dtext("| |",x,y+18,255,255,0,0,1);
+dtext("_",x,y+22,255,255,0,0,1);
+ref(0,0,240,320);
+}
+//
+sleep(300);
+cls(0,0,0);
+char zi[10];i2=30;
+
+drect(0,30,60,290,255,0,0);
+for(i=1;i<=8;i++)
+{
+if(i==1)sprintf(zi,"在");
+if(i==2)sprintf(zi,"下");
+if(i==3)sprintf(zi,"只");
+if(i==4)sprintf(zi,"是");
+if(i==5)sprintf(zi,"一");
+if(i==6)sprintf(zi,"个");
+if(i==7)sprintf(zi,"菜");
+if(i==8)sprintf(zi,"鸟");
+i2=i2+30;sleep(200);
+
+dtext(zi,10,i2,255,255,255,0,1);
+ref(0,0,140,320);
+}
+i2=30;
+drect(180,30,220,290,255,0,0);
+for(i=1;i<=8;i++)
+{
+if(i==1)sprintf(zi,"希");
+if(i==2)sprintf(zi,"望");
+if(i==3)sprintf(zi,"大");
+if(i==4)sprintf(zi,"家");
+if(i==5)sprintf(zi,"多");
+if(i==6)sprintf(zi,"多");
+if(i==7)sprintf(zi,"指");
+if(i==8)sprintf(zi,"教");i2=i2+30;
+dtext(zi,195,i2,255,255,255,0,1);sleep(200);
+ref(0,0,240,320);
+}
+drect(0,0,240,75,255,0,0);
+dtext("雕虫小技",70,10,255,255,255,0,1);
+for(i=0;i<=240;i++)
+ref(0,0,i,50);
+
+
+
+
+sleep(1200);
+cls(100,100,100);
+for(i=240;i>=1;i-=2)
+ref(i,0,240,320);
+
+for(i=1;i<=40;i++)
+dline(0,320-i,240,320-i,i*2,i+10,i);
+dtext("返回",190,290,r,g,b,0,1);
+ref(180,280,50,50);
+jm_1=1;jm_=1;
+return 0;
+}
+
+int function5()
+//屏幕测试
+{
+cls(0,0,0);
+dtext("开始测试！",80,100,255,255,255,0,1);
+ref(0,0,240,320);
+sleep(600);
+cls(0,0,255);
+
+int i,r5_,g5_,b5_;
+for(i=1;i<=9;i++)
+{
+if(i==1)r5_=g5_=b5_=55;
+if(i==2)r5_=g5_=b5_=255;
+if(i==3)g5_=b5_=0;
+if(i==4){r5_=0;g5_=255;}
+if(i==5){g5_=0;b5_=255;}
+if(i==6)
+{r5_=g5_=255;b5_=0;}
+if(i==7)
+{r5_=0;b5_=255;}
+if(i==8)
+{r5_=255;g5_=0;}
+cls(r5_,g5_,b5_);
+ref(0,0,240,320);
+sleep(1000);
+}
+dtext("测试完成！",60,100,r,g,b,0,1);
+
+
+for(i=1;i<=40;i++)
+dline(0,320-i,240,320-i,i*2,i+10,i);
+
+dtext("返回",190,290,r,g,b,0,1);
+ref(0,0,240,320);
+
+return 0;
+}
+
+
+void function9()
+//帮助关于
+{
+cls(0,0,0);
+int x;
+for(x=1;x<=40;x++)
+{
+dline(0,x,240,x,x*2,x+10,x);
+dline(0,320-x,240,320-x,x*2,x+10,x);
+}
+
+dtext("帮助关于",80,10,r,g,b,0,1);
+dtext("1~9键为各模块快捷键",0,60,0,0,255,0,1);
+dtext("左右键左右移动;",0,90,0,255,0,0,1);
+dtext("按左键启动程序",0,120,255,245,0,0,1);
+dtext("退出可退出本软件;",0,150,245,0,245,0,1);
+dtext("本软件由骆志彬制作、",0,180,245,55,55,0,1);
+dtext("其他人都不得乱改！",0,210,255,0,0,0,1);
+dtext("否则将受到法律追究！",0,240,255,2,2,0,1);
+dtext("祝大家使用愉快！^_^",0,270,245,245,245,0,1);
+dtext("返回",185,295,r,g,b,0,1);
+
+time(100);
+int i;
+for(i=50;i<=320;i+=2)
+ref(0,0,240,i);
+jm_=2;
+
+}
+
+void function8()
+//获取手机信息
+{
+cls(0,0,0);int i;
+
+for(i=1;i<=40;i++)
+dline(0,i,240,i,i*2,i+10,i);
+
+dtext("手机信息",80,5,100,100,100,0,1);
+char pt[16];
+sprintf(pt,"平台目录:%s",getparentpath());
+
+dtext(pt,0,60,255,0,255,0,1);
+dtext("硬件信息:",0,90,255,255,0,0,1);
+dtext("IMEI:025080920000158",0,120,0,55,255,0,1);
+dtext("IMSI:460007137465218",0,150,0,55,255,0,1);
+dtext("生产厂家:huanqin",0,180,0,255,255,0,1);
+dtext("内存信息:",0,220,255,0,0,0,1);
+char R[10];int N;
+
+N=getmemremain();
+sprintf(R,"剩余%dKB",N);
+dtext(R,0,250,255,5,5,0,1);
+N=getsysmem();
+sprintf(R,"总共%dKB",N);
+dtext(R,0,280,255,2,0,0,1);
+dtext("返回",190,290,r,g,b,0,1);
+
+for(N=1;N<=320;N+=2)
+ref(0,N,240,N);
+jm_=2;
+}
+
+
+
+int zdtc()
+//自动退出应用
+{
+drect(30,115,190,50,0,,0,0);
+dtext("正在自动退出！",40,120,255,255,255,0,1);
+ref(0,0,240,320);
+sleep(1800);
+return 0;
+}
+
+void zwsx(void)
+//等待更新
+{
+drect(0,90,240,320,0,0,0);
+dtext("该功能暂未实现！",10,150,r,g,b,0,1);
+dtext("等待更新吧！",60,200,r,g,b,0,1);
+yesno();
+ref(0,0,240,320);
+}
+
+void time(int j)
+//显示时间
+{
+getdatetime(&date);
+char timer[10];
+sprintf(timer,"%d:%d",date.hour,date.minute);
+dtext(timer,j,285,r,g,b,0,1);
+
+}
+
+
+void yesno()
+{
+int i;
+for(i=1;i<=40;i++)
+{
+dline(0,i,240,i,i*2,i+10,i);
+dline(0,320-i,240,320-i,i*2,i*10,i);
+
+} 
+dtext("返回",190,290,r,g,b,0,1); 
+ref(0,0,240,320);
+}

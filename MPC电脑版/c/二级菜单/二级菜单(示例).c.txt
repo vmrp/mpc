@@ -1,0 +1,326 @@
+/*多级菜单示例
+by:每天进步一点
+QQ:643552878
+2012.5
+*/
+
+#include <base.h>
+#include "c/二级菜单/text.h"
+#define FONT 1
+#define REF ref(0,0,SCRW,SCRH)
+
+#define ZN 2
+#define N1 4
+#define N2 4
+
+int N[ZN]={N1,N2};
+#define pN N[menuj-1]
+//各级菜单选项个数
+
+#define potion menu_potion[menuj-1]
+int8 menu_potion[ZN]={1,1};
+
+int R=0,G=0,B=0;
+//选项文字颜色
+int BR=250,BG=250,BB=250;
+//背景颜色
+
+
+int tw,th;
+textwh("菜",FALSE,FONT,&tw,&th);
+//或取字体宽高
+
+char *bt[3]={"二级菜单","选择","取消"};
+//标题
+char *menu1text[N1]={"菜单","帮助","关于","退出"};
+//一级菜单文字
+int wlen=tw*2;
+//一级菜单文字长度,wlen=tw*字数,下同
+
+char *menu2text[N2]={"刷屏！","加油！","二级3","二级4"};
+int wlen2=tw*3;
+
+uint16 *tu;
+int tuon=0,on=0;
+int8 menuj=0;
+
+int init()
+{
+ huikz();
+ return 0;
+}
+
+void eff(int x,int y,int w,int h)
+{
+effsetcon(x,y,w,h,138,138,138);
+}
+void text(char *te,int x,int y)
+{dtext(te,x,y,R,G,B,FALSE,FONT);
+}
+
+//显示标题背景图片
+void bmp(int n)
+{
+ int y=0;
+ if(n==2)y=SCRH-th;
+ bmpshowflip(tu,0,y,SCRW,SCRW,th,BM_COPY,0,0,0);
+}
+
+
+//按键入口
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN==type&&!on)
+ switch(p1)
+ {
+
+//按右软件或左键
+ case _SRIGHT:
+ case _LEFT:
+ if(menuj>0)menuj--;
+ huikz();
+ if(menuj)sright();
+ break;
+
+//按左软件或右键
+ case _SLEFT:
+ case _RIGHT:
+ sleft();break;
+
+
+//上下
+ case _UP:
+ case _DOWN:
+ updown(p1);
+ break;
+
+
+ }
+else if(type==KY_DOWN&&on)
+switch(p1)
+{
+ case _SRIGHT:
+ sright();break;
+}
+if(p1==_STAR)exitapp();
+
+    return 0;
+}
+
+void exitapp()
+{ if(tu!=NULL)free(tu);
+ timerdel(cls_timer);
+ exit();
+}
+
+int pause()
+{return 0;}
+int resume()
+{
+huimenu();
+huikz();
+return 0;
+}
+void sleft()
+{
+if(menuj==0)
+{menuj++;huikz();}
+
+else if(menuj==1)
+switch(potion)
+{
+ case 1:
+ if(menuj<ZN)
+ {menuj++;potion=1;}
+ huikz();break;
+ case 2:
+ case 3:on=1;
+ huikz();
+ break;
+ case 4:
+ exitapp();break;
+}
+
+ else if(menuj==2)
+ switch(potion)
+{ 
+ case 1:on=1;
+ timerstart(cls_timer,300,1,"CLS",1);break;
+ case 2:on=1;huikz();break;
+ case 3:
+ case 4:on=1;huikz();break;
+}
+
+}
+
+void sright()
+{
+ if(menuj==1)
+ switch(potion)
+{
+ case 2:
+ case 3:
+ potion=1;
+ menuj=on=0;
+ huikz();
+ break;
+}
+
+else if(menuj==2)
+switch(potion)
+{ case 1:
+  timerstop(cls_timer);
+ menuj=on=0;huikz();
+ break;
+  case 2:
+  case 3:
+  case 4:menuj=on=0;
+ huikz();break;
+}
+
+}
+
+
+//绘图控制
+void huikz()
+{
+ if(!on)
+ switch(menuj)
+ {
+ case 0:huimenu();break;
+ case 1:huimenu1();break;
+ case 2:huimenu2();break;
+}
+if(on)
+{
+ if(menuj==1)
+ switch(potion)
+ {
+ case 2:help();break;
+ case 3:about();break;
+}
+ else if(menuj==2)
+switch(potion)
+{
+ case 1:CLS();break;
+break;
+//二级菜单1
+ case 2:nono();break;
+//二级菜单2
+ case 3:wu();break;
+//二级菜单3
+ case 4:wu();break;
+//二级菜单4
+}
+ }
+
+
+}
+
+
+void updown(int p1)
+{
+if(menuj)
+{if(p1==_UP)
+{ if(potion>1)potion--;else potion=pN;}
+
+else if(p1==_DOWN)
+{if(potion<pN)potion++;
+else potion=1;}
+
+}
+huikz();
+
+}
+//或取字符串的在当前字体的在屏幕上所占的宽
+int textlen(char *te)
+{
+int w,h;
+textwh(te,FALSE,FONT,&w,&h);
+return w;
+}
+
+
+//绘框架图
+void huimenu()
+{
+cls(BR,BG,BB);
+if(!tuon)
+{
+ for(int y=0;y<=th;y++)
+{ effsetcon(0,y,SCRW,1,y*5,y*10,y*10);
+ effsetcon(0,SCRH-y,SCRW,1,y*5,y*10,y*10);
+ REF;
+}
+
+ tu=malloc(SCRW*th*2);
+ memcpy(tu,getscrbuf(),SCRW*th*2);
+ tuon=!tuon;
+ }
+
+ bmp(1);bmp(2);
+
+int w;
+w=(SCRW-textlen(bt[0]))/2;
+ text(bt[0],w,0);
+
+ text(bt[1],0,SCRH-th);
+ w=SCRW-textlen(bt[2]);
+
+ text(bt[2],w,SCRH-th);
+
+REF;
+}
+
+
+
+//绘一级菜单选择
+void huimenu1()
+{
+
+ int NN=pN;
+
+ int w,y=SCRH-(NN+1)*th,y2=SCRH-th;
+
+ drect(0,y,tw*2,NN*th,150,150,150);
+ drect(1,y+1,tw*2-2,NN*th-2,BR,BG,BB);
+ drect(tw*2,y-1,wlen2,th*NN+2,BR,BG,BB);
+ 
+ for(int n=0;y<y2;y+=th)
+{
+ text(menu1text[n],0,y);
+ n++;
+}
+
+y=SCRH-(NN+2-potion)*th;
+
+effsetcon(0,y,tw*2,th,138,138,138);
+
+REF;
+}
+
+void huimenu2()
+{
+
+int NN=pN;
+int w,y=SCRH-(NN+1)*th,y2=SCRH-th;
+int xx=tw*2;
+
+ drect(xx,y,wlen2,NN*th,150,150,150);
+ drect(xx+1,y+1,wlen-2,NN*th-2,BR,BG,BB);
+ 
+ for(int n=0;y<y2;y+=th)
+{
+ text(menu2text[n],xx,y);
+ n++;
+}
+
+y=SCRH-(NN+2-potion)*th;
+
+effsetcon(xx,y,wlen2,th,138,138,138);
+
+REF;
+
+}
+
+

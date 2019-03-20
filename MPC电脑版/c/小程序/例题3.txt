@@ -1,0 +1,62 @@
+/*输入3个数.按小到大输出*/
+#include <base.h>
+int init(void)
+{
+int a=6,b=10,c=55;
+printf("自答:");
+switch(1)
+{
+case a<b&&b<c:
+printf("%d<%d<%d",a,b,c);
+break;
+case a<c&&c<b:
+printf("%d<%d<%d",a,c,b);
+break;
+case b<a&&a>c:
+printf("%d<%d<%d",b,a,c);
+break;
+case b<c&&c<a:
+printf("%d<%d<%d",b,c,a);
+break;
+case c<a&&a<b:
+printf("%d<%d<%d",c,a,b);
+break;
+case c<b&&b<a:
+printf("%d<%d<%d",c,b,a);
+break;
+}
+printf("\n标准答案:");int t;
+if(a>b)
+{t=a;a=b;b=t;}
+else if(a>c)
+{t=c;c=a;a=t;}
+else if(b>c)
+{t=b;b=c;c=t;}
+printf("%d>%d>%d",c,b,a);
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+     case _SRIGHT:
+          exit();
+         break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

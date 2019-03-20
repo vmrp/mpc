@@ -1,0 +1,57 @@
+/*把二维输组每行最大的数,赋给一维数组,并输出
+by:跃然
+QQ:643552878
+2012.5.12
+*/
+
+#include <base.h>
+#define x 4
+#define y 4
+
+int init()
+{
+int s[x][y],s1[x];
+int i,i2;
+
+for(i=0;i<4;i++)
+{
+for(i2=0;i2<4;i2++)
+printf("%d ",(s[i][i2]=rand()/200));
+
+printf("\n");
+}
+
+printf("\n\n");
+
+for(i=0;i<4;i++)
+{
+s1[i]=bai(s[i][0],s[i][1],s[i][2],s[i][3]);
+printf("%d ",s1[i]);
+}
+exit();
+return 0;
+}
+
+int bai(int x,int y,int x2,int y2)
+{
+int xy[4]={x,y,x2,y2};
+int i,i2,temp;
+
+for(i=0;i<4;i++)
+for(i2=0;i2<4;i2++)
+
+if(xy[i2]<xy[i2+1])
+{
+temp=xy[i2+1];
+xy[i2+1]=xy[i2];
+xy[i2]=temp;
+}
+return xy[0];
+}
+
+int event(int type,int p0,int p1)
+{exit();return 0;}
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}

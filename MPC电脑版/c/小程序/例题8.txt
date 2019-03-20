@@ -1,0 +1,41 @@
+/*有5个人,第5个人说此第4个人大2岁;第4个人此第3个大2岁…第一个人  岁*/
+#include <base.h>
+#include "c/LZB.txt"
+
+int age(int n)
+{ int c;
+ if(n==1)c=10;
+ else c=age(n-1)+2;
+ return n;
+}
+ 
+int init(void)
+{
+printf("%d",age(5));
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

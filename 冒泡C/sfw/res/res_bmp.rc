@@ -1,0 +1,34 @@
+#define RES_BITMAP_FILENAME_LEN 11
+
+//bitmap information struct
+typedef struct BITMAP_INFO_T{
+char filename[RES_BITMAP_FILENAME_LEN];
+Uint16 width;
+Uint16 height;
+}BITMAP_INFO, *PBITMAP_INFO;
+
+static const BITMAP_INFO bmpInfo[RES_BITMAP_COUNT] =
+{
+
+#ifdef SCREEN_SIZE_240320
+
+{"file.bmp", 16,16},
+{"folder.bmp", 16,16},
+
+#endif //SCREEN_SIZE_240320
+
+#ifdef SCREEN_SIZE_176220
+
+{"file.bmp", 16,16},
+{"folder.bmp", 16,16},
+
+#endif //SCREEN_SIZE_176220
+
+#ifdef SCREEN_SIZE_240400
+
+{"file.bmp", 16,16},
+{"folder.bmp", 16,16},
+
+#endif //SCREEN_SIZE_240400
+
+};

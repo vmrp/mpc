@@ -1,0 +1,135 @@
+#include <base.h>
+#include <sound.h>
+#include <ctype.h>
+int init(void)
+{
+cls(0,0,0);
+FileFind("My Music",".mp3");
+FileFindShow();
+//music();
+ref(0,0,SCRW,SCRH);
+return 0;
+}
+int music()
+{
+soundinit(3);
+soundloadfile(3,FileListHead);
+soundplay(3,0,0);
+return 0;
+}
+int event(int type,int p0,int p1)
+{
+if(type==KY_DOWN)
+{
+switch(p0)
+{
+case _SRIGHT:
+FileFindDel();
+exit();
+break;
+}
+}
+return 0;
+}
+
+int pause(void)
+{ return 0; }
+
+int resume(void)
+{ return 0; }
+
+#define MAXLEN 100
+#define BUFILE "list.dat"
+
+char*
+FileListHead=NULL;
+//文件列表指针
+
+char* FileMalloc;//文件列表内存
+int FileN;//获得文件数目
+
+//查找path目录下以“tzu”结尾的文件
+void FileFind(char *path,char* tzu)
+{
+dtext("正在搜索…",70,150,200,200,200,0,2);
+ref(70,150,110,22);
+int filehand=open(BUFILE,8|4);//创建临时数据文件
+
+char *temp=malloc(MAXLEN);
+//搜索缓冲
+
+uint32 hand=findstart(path,temp,MAXLEN);
+findnext(hand,temp,MAXLEN);
+
+uint32 pathlen=strlen(path);
+char *filetemp=malloc(pathlen+MAXLEN+2);
+
+while(1)
+{
+memset(temp,NULL,MAXLEN);
+if(findnext(hand,temp,MAXLEN)==-1)
+break;
+memset(filetemp,NULL,MAXLEN+pathlen+2);
+sprintf(filetemp,"%s/%s",path,temp);
+
+//printf("%s\n",filetemp);
+
+if(filestate(filetemp)==IS_FILE)
+//判断是否为文件
+ {
+ char* part=temp;
+ part+=strlen(temp)-strlen(tzu);
+
+if(strcmp(part,tzu)==0)//判断文件类型
+ {
+ write (filehand,temp,MAXLEN);
+//写入文件名到临时数据文件，(文件指针会自动往后跳MAXLEN)
+ FileN++;//文件数
+ }
+ }
+
+}
+findstop(hand);//结束文件搜索
+free(temp);//释放搜索缓冲
+
+FileMalloc=malloc(FileN*MAXLEN);
+//为文件列表申请内存
+free(filetemp);
+
+seek(filehand,0,SEEK_SET);
+//设置文件指针到文件头
+
+read(filehand,FileMalloc,FileN*MAXLEN);
+//读取临时数据文件内容到FileMalloc
+
+ close(filehand);
+ remove(BUFILE);
+}     
+    
+//绘制文件列表
+void FileFindShow()
+{cls(0,0,0);
+int i,Fw,Fh;
+textwh("测",0,2,&Fw,&Fh);
+
+int HowDraw=SCRH/Fh-1;
+
+while(i<HowDraw)
+{
+ if(i>=FileN)
+ break;
+ dtext (FileMalloc+i*MAXLEN,0,Fh+i*Fh,200,200,200,0,2);
+ i++;
+}
+char s[15];
+sprintf(s,"※总共%d个文件",FileN);
+dtext(s,0,0,255,255,0,0,2);
+}    
+
+//卸载文件搜索
+void FileFindDel()
+{
+if(FileListHead!=NULL)
+free(FileListHead);
+free(FileMalloc);
+}

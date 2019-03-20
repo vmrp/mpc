@@ -1,0 +1,45 @@
+/*
+√∞≈›≈≈–Ú
+by:‘æ»ª
+QQ:643352878
+2011.11.20
+*/
+#include <base.h>
+#define n 10
+int init()
+{ 
+
+int i,i2;
+int a[n]={15,6,11,56,78,16,81,61,18,55};
+int temp;
+
+for(i=n;i>=1;i--)
+for(i2=0;i2<n-i;i2++)
+if
+(a[i2]<a[i2+1])
+{temp=a[i2];a[i2]=a[i2+1];a[i2+1]=temp;}
+
+for(i=0;i<10;i++)
+printf("%d>",a[i]);
+exit();
+
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+    break;
+    }}return 0;
+}
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}

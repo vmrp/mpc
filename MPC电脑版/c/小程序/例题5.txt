@@ -1,0 +1,41 @@
+/*Êä³öÏóÆåÆåÅÌ*/
+#include <base.h>
+
+int init(void)
+{
+int i,j;
+for(i=0;i<8;i++)
+{
+for(j=0;j<8;j++)
+if((i+j)%2==0)
+printf("%c%c",219,219);
+else printf(" ");
+printf("\n");
+}
+exit();return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

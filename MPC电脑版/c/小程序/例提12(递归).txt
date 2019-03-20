@@ -1,0 +1,42 @@
+/*有r个人，每个比下个大2岁,最后一个人i岁求第一个人几岁*/
+
+#include <base.h>
+#define r 5
+#define i 10
+int f(int n)
+{int a;
+if(n==1)a=i;
+else a=f(n-1)+2;
+return a;
+}
+
+int init(void)
+{
+printf("age=%d",f(r));
+
+exit();return 0;
+}
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break; 
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

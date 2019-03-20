@@ -1,0 +1,58 @@
+#include "base.h"
+#define N 6
+
+int number=153340;
+
+printf("愿数为:%d\n",number);
+
+int init(void)
+{
+int i,j,temp,count=0;
+int num[N];
+for(i=0;number>0;i++)
+{
+num[i]=number%10;
+number=number/10;
+if(i==(N-1))break;
+
+}
+
+for(i=0;i<N;i++)
+num[i]=(num[i]+5)%10;
+
+temp=num[N-1];
+num[N-1]=num[0];
+num[0]=temp;
+
+printf("加密后为:");
+for(i=0;i<N;i++)
+printf("%d",num[i]);
+exit();
+return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {     switch(p1)
+   {
+ case _SRIGHT:
+tc(10);exit();
+           break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

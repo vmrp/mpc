@@ -1,0 +1,95 @@
+/*
+长按定时器用法
+by:每天进步一点
+2012.5.24
+*/
+
+#include <base.h>
+#define REF ref(0,0,SCRW,SCRH)
+
+int anf=NULL;
+//定时器句炳
+int fx=SCRW/2,fy=SCRH/2;
+//距形在屏幕上的xy坐标
+
+int init(void)
+{
+ F(0);
+ 
+   return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN==type)
+  switch(p1)
+ {
+        case _SRIGHT:
+ if(anf)timerdel(anf);
+ exit();
+ break;
+
+ case _LEFT:
+ case _RIGHT:         
+ case _UP:
+ case _DOWN:
+ F(p1);//短按
+ //创造并启动定时器
+ if(anf)timerdel(anf);
+ anf=timercreate();
+ timerstart(anf,1,p1,"F",1);
+ break;
+
+}
+
+
+//按键抬起删除定时器
+if(KY_UP==type)
+switch(p1)
+{
+ case _UP:case _DOWN:
+ case _LEFT:case _RIGHT:
+if(anf)
+{ timerdel(anf);anf=NULL; }
+ break;
+ }
+
+ return 0;
+}
+
+int pause()
+{return 0;}
+int resume()
+{return 0;}
+
+void F(int p1)
+{
+if(p1==_UP)
+{ if(fy>0)fy-=10;else fy=SCRH;}
+
+else if(p1==_DOWN)
+{ if(fy<SCRH)fy+=10;else fy=0;}
+
+else if(p1==_LEFT)
+{ if(fx>0)fx-=10; else fx=SCRW;}
+
+else if(p1==_RIGHT)
+{ if(fx<SCRW)fx+=10;else fx=0;}
+
+cls(0,0,0);
+
+//drect(fx,fy,10,10,255,255,255);
+char *txt;
+if(rand()%2)
+txt="~_^";
+else txt="^_~";
+
+dtext(txt,fx,fy,255,255,255,FALSE,1);
+dtext(">长按移动<",50,0,255,255,255,0,1);
+
+
+REF;
+
+}
+
+//by:每天进步一点

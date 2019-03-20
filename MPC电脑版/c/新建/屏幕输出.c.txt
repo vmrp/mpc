@@ -1,0 +1,132 @@
+/*函数在后面
+*/
+#include <base.h>
+
+int init(void)
+{
+ cls(255,255,255);
+ ref(0,0,SCRW,SCRH);
+ 
+
+ int a=1314;
+ printf_d("我爱你%d",a,10,SCRH/2,255,25,255);
+
+
+char *txt2="1314"; 
+printf_s("我爱你%s",txt2,10,SCRH/2+30,255,255,25);
+
+printf_c("52%c1314",'0',10,SCRH/2+60,255,0,0);
+
+
+//下面是1+2+3....+100的例子
+int b=1;
+for(int c=2;c<101;c++)
+b+=c;
+printf_d("1+2+3...+100=%d",b,0,50,25,25,25);
+
+    return 0;
+}
+
+/*闪屏*//*
+int32 timer=timercreate();
+timerstart(timer,500,1,"CLS",1);
+
+void CLS(int data)
+{
+sand(getuptime());
+
+effsetcon(0,0,SCRW,SCRH,rand()%255,rand()%255,rand()%255);
+
+ref(0,0,SCRW,SCRH);
+}
+*/
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+
+      //timerdel(timer);
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}
+
+/*可将下列函数复制到你的代码中*/
+
+
+/*输出%d格式的
+x,y为在屏幕输出位置。,r,g,b为文字颜色，下同
+返回:
+成功 1
+示败 0
+*/
+
+int printf_d(char *s1,int f,int x,int y,int8 r,int8 g,int8 b)
+{
+
+char *s2=malloc(strlen(s1)+10);
+
+sprintf(s2,s1,f);
+if(strlen(s2)<=0)
+{ free(s2);
+ return 0;
+}
+
+dtext(s2,x,y,r,g,b,FALSE,1);
+ref(0,0,SCRW,SCRH);
+free(s2);
+return 1;
+}
+
+
+int printf_s(char *s1,char *s2,int x,int y,int8 r,int8 g,int8 b)
+{
+char *s3=malloc(strlen(s1)+strlen(s2)+10);
+sprintf(s3,s1,s2);
+if(strlen(s3)<=0)
+{ free(s3);
+ return 0;
+}
+dtext(s3,x,y,r,g,b,FALSE,1);
+ref(0,0,SCRW,SCRH);
+free(s3);
+
+return 1;
+}
+
+
+
+int printf_c(char *s1,char s2,int x,int y,int8 r,int8 g,int8 b)
+{
+char *s3=malloc(strlen(s1)+10);
+sprintf(s3,s1,s2);
+if(strlen(s3)<=0)
+{ free(s3);
+ return 0;
+}
+dtext(s3,x,y,r,g,b,FALSE,1);
+ref(0,0,SCRW,SCRH);
+free(s3);
+return 1;
+}
+
+//by:每天进步一点

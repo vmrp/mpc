@@ -1,0 +1,164 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MPCrun - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDB.tmp" with contents
+[
+/nologo /MLd /Gm /GX /ZI /Od /I "..\include" /I "..\..\src\run" /I "..\..\interpreter\src" /I "..\..\interpreter\syslib" /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /D "SDK_MOD" /D "SIM_MOD" /D "_MPC_VC6_" /Fp"MPCrun___Win32_Debug/MPCrun.pch" /YX /Fo"MPCrun___Win32_Debug/" /Fd"MPCrun___Win32_Debug/" /FD /GZ /c 
+"F:\mpc\√∞≈›C\src\run\main.c"
+"F:\mpc\√∞≈›C\src\run\momo.c"
+"F:\mpc\√∞≈›C\interpreter\src\clibrary.c"
+"F:\mpc\√∞≈›C\interpreter\src\expression.c"
+"F:\mpc\√∞≈›C\interpreter\src\heap.c"
+"F:\mpc\√∞≈›C\interpreter\src\include.c"
+"F:\mpc\√∞≈›C\interpreter\src\lex.c"
+"F:\mpc\√∞≈›C\interpreter\src\myDebug.c"
+"F:\mpc\√∞≈›C\interpreter\src\myfunc.c"
+"F:\mpc\√∞≈›C\interpreter\src\parse.c"
+"F:\mpc\√∞≈›C\interpreter\src\picoc.c"
+"F:\mpc\√∞≈›C\interpreter\src\platform.c"
+"F:\mpc\√∞≈›C\interpreter\src\table.c"
+"F:\mpc\√∞≈›C\interpreter\src\type.c"
+"F:\mpc\√∞≈›C\interpreter\src\variable.c"
+"F:\mpc\√∞≈›C\interpreter\syslib\m_base.c"
+"F:\mpc\√∞≈›C\interpreter\syslib\m_ctype.c"
+"F:\mpc\√∞≈›C\interpreter\syslib\m_net.c"
+"F:\mpc\√∞≈›C\interpreter\syslib\m_sound.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDB.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDC.tmp" with contents
+[
+/nologo /out:"MPCrun___Win32_Debug\MPCrun.lib" 
+".\MPCrun___Win32_Debug\main.obj"
+".\MPCrun___Win32_Debug\momo.obj"
+".\MPCrun___Win32_Debug\clibrary.obj"
+".\MPCrun___Win32_Debug\expression.obj"
+".\MPCrun___Win32_Debug\heap.obj"
+".\MPCrun___Win32_Debug\include.obj"
+".\MPCrun___Win32_Debug\lex.obj"
+".\MPCrun___Win32_Debug\myDebug.obj"
+".\MPCrun___Win32_Debug\myfunc.obj"
+".\MPCrun___Win32_Debug\parse.obj"
+".\MPCrun___Win32_Debug\picoc.obj"
+".\MPCrun___Win32_Debug\platform.obj"
+".\MPCrun___Win32_Debug\table.obj"
+".\MPCrun___Win32_Debug\type.obj"
+".\MPCrun___Win32_Debug\variable.obj"
+".\MPCrun___Win32_Debug\m_base.obj"
+".\MPCrun___Win32_Debug\m_ctype.obj"
+".\MPCrun___Win32_Debug\m_net.obj"
+".\MPCrun___Win32_Debug\m_sound.obj"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDC.tmp"
+<h3>Output Window</h3>
+Compiling...
+main.c
+momo.c
+clibrary.c
+f:\mpc\√∞≈›c\src\run\momo.c(293) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(293) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(526) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(526) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(526) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(531) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(531) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(531) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(536) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(536) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(536) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(541) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(541) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(541) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(601) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(601) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(601) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(603) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(603) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(603) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(617) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(617) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(617) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(618) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(619) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(619) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(619) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(620) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(654) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(655) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(655) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(686) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\src\run\momo.c(686) : warning C4761: integral size mismatch in argument; conversion supplied
+expression.c
+f:\mpc\√∞≈›c\interpreter\src\clibrary.c(157) : warning C4761: integral size mismatch in argument; conversion supplied
+f:\mpc\√∞≈›c\interpreter\src\expression.c(819) : warning C4002: too many actual parameters for macro 'debugf'
+heap.c
+include.c
+lex.c
+myDebug.c
+f:\mpc\√∞≈›c\interpreter\src\mydebug.c(90) : warning C4002: too many actual parameters for macro 'FPRINTF'
+f:\mpc\√∞≈›c\interpreter\src\mydebug.c(94) : warning C4002: too many actual parameters for macro 'FPRINTF'
+f:\mpc\√∞≈›c\interpreter\src\mydebug.c(114) : warning C4002: too many actual parameters for macro 'FPRINTF'
+myfunc.c
+parse.c
+picoc.c
+platform.c
+table.c
+F:\mpc\√∞≈›C\interpreter\src\platform.c(249) : warning C4761: integral size mismatch in argument; conversion supplied
+type.c
+variable.c
+m_base.c
+m_ctype.c
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(206) : warning C4761: integral size mismatch in argument; conversion supplied
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(214) : warning C4761: integral size mismatch in argument; conversion supplied
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(528) : warning C4761: integral size mismatch in argument; conversion supplied
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(528) : warning C4761: integral size mismatch in argument; conversion supplied
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(528) : warning C4761: integral size mismatch in argument; conversion supplied
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(528) : warning C4761: integral size mismatch in argument; conversion supplied
+F:\mpc\√∞≈›C\interpreter\syslib\m_base.c(528) : warning C4761: integral size mismatch in argument; conversion supplied
+m_net.c
+m_sound.c
+Creating library...
+<h3>
+--------------------Configuration: simulator - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo".\Debug/simulator.res" /i "\mpc\√∞≈›C\vc6\simulator" /d "_DEBUG" /d "_AFXDLL" "F:\mpc\√∞≈›C\vc6\simulator\simulator.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDD.tmp" with contents
+[
+/nologo /MDd /w /W0 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "SDK_MOD" /D "SIM_MOD" /D "DEBUG" /D "_AFXDLL" /FR".\Debug/" /Fo".\Debug/" /Fd".\Debug/" /FD /GZ /GZ /GZ /GZ /GZ /GZ /GZ /GZ /GZ /GZ /GZ /GZ /c 
+"F:\mpc\√∞≈›C\vc6\simulator\simulator.cpp"
+"F:\mpc\√∞≈›C\vc6\simulator\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDD.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDE.tmp" with contents
+[
+WS2_32.lib winmm.lib dsound.lib dxguid.lib sdklib.lib vfw32.lib SIM_mr_helperexb.lib simlib.lib /nologo /subsystem:windows /incremental:yes /pdb:".\Debug/simulator.pdb" /debug /machine:I386 /out:".\Debug/simulator.exe" /pdbtype:sept /libpath:"..\simulator" /libpath:"..\simulator\directx" 
+".\Debug\simulator.obj"
+".\Debug\StdAfx.obj"
+".\Debug\simulator.res"
+".\MPCrun___Win32_Debug\MPCrun.lib"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPDE.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+simulator.cpp
+StdAfx.cpp
+Generating Code...
+Linking...
+LINK : warning LNK4098: defaultlib "LIBCD" conflicts with use of other libs; use /NODEFAULTLIB:library
+Creating command line "bscmake.exe /nologo /o".\Debug/simulator.bsc"  ".\Debug\simulator.sbr" ".\Debug\StdAfx.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+simulator.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

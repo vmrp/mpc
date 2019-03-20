@@ -1,0 +1,70 @@
+#include <base.h>
+
+#define N 10
+
+int init()
+{
+int x[N]={0,20,30,40,55,6,70,8,90,100};
+//数列
+cls(0,0,0);
+dtext("计算中…",50,100,255,255,25,0,1);
+ref(0,0,SCRW,SCRH);
+
+int xx,s;
+
+for(int i=0;i<N;i++)
+xx+=x[i];
+//数列之和
+xx=xx/N;//平均数
+
+for(i=0;i<N;i++)
+s=s+pf(x[i],xx);
+//数列差平方之和
+
+s=s/N;//计算方差
+
+
+char *text=malloc(sizeof(s));
+sprintf(text,"方差为:%d",s=s/N);
+dtext(text,50,150,255,255,5,0,1);
+free(text);
+ref(0,0,SCRW,SCRH);
+
+    return 0;
+}
+
+/*计算两个数的差的平方(正数)*/
+int pf(int x,int y)
+{
+int s=x-y;
+if(s>=0)return (s*s);
+else return (s*(-s));
+
+}
+
+int event(int type, int p1, int p2)
+{
+    if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

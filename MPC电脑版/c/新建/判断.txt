@@ -1,0 +1,203 @@
+/*判断直角三角形并绘图
+
+注：只能绘直角三角形。
+QQ287369048
+by:俊帅小花少
+
+
+师傅:
+每天进步一点
+优化。
+QQ:643552878
+E界ID:47241
+*/
+
+#include <base.h>
+
+#define FONT 1
+//字体大小
+
+#define REF ref(0,0,SCRW,SCRH)
+//刷新宏
+
+#define text(txt,x,y,r,g,b) dtext(txt,x,y,r,g,b,FALSE,FONT)
+//绘字宏
+
+int tw,th;
+textwh("帅",FALSE,FONT,&tw,&th);
+//获得当前字体下的文字宽高
+
+//以下为△三边初始长度，可改
+int a=6,b=8,c=10;
+
+int j;
+
+int init(void)
+{
+ star();
+ return 0;
+}
+
+
+
+int event(int type, int p1, int p2)
+{
+   if(KY_DOWN==type)
+{
+ if(!j){j=1;hui();}
+ else if(j)
+ switch(p1)
+ {
+  //按下右软件
+  case _SRIGHT:
+  exitapp();
+  break;
+
+ //按下中心键(5键)
+  case _SELECT:
+  case _5:  stop();break;
+
+  //按下左软件
+  case _SLEFT:
+  hui();L();
+  break;
+}
+
+}
+
+    return 0;
+}
+
+int pause()
+{return 0;}
+int resume()
+{return 0;}
+
+//绘一个空心矩形
+void rect(int x,int y,int w,int h)
+{
+drect(x,y,w,h,255,255,0);
+drect(x+1,y+1,w-2,h-2,0,0,0);
+}
+
+
+//绘背景
+void hui()
+{
+ cls(255,55,255);
+ drect(1,1,SCRW-2,SCRH-2,138,250,250);
+ int y=SCRH-th;
+
+ rect(0,y,SCRW,th);
+ text("计算",0,y,255,255,255);
+ text("输入",SCRW/2-tw,y,255,25,255);
+ text("退出",SCRW-tw*2,y,255,255,255);
+ abc();
+ REF;
+
+}
+
+//暂未实现
+void stop()
+{
+ int y=SCRH-th*2;
+
+ rect(0,y,SCRW,th);
+ text("提示:暂未实现！",0,y,255,255,255);
+ REF;sleep(300);
+ drect(0,y,SCRW,th,138,250,250);
+ REF;
+}
+
+
+//判断并绘三角图
+void L()
+{
+ int a2=a,b2=b,c2=c;
+ int aa=a*a,bb=b*b,cc=c*c;
+
+int yes=((aa+bb==cc)||(bb+cc==aa)||(aa+cc==bb));
+
+if(yes)
+text("直角△",tw,SCRH/2,1,1,1);
+else
+text("非直角△",tw,SCRH/2,1,1,1);
+
+REF;
+
+if(a<24&&b<24)
+{a*=10;b*=10;}
+
+else if(a<48&&b<48)
+{a*=5;b=b*5;}
+
+c=a;
+
+if(yes)
+for(a=0;a<=c;a++)
+{
+dline(180,a,180-b,c,128+a,128,128+a);
+REF;
+}
+
+a=a2;b=b2;c=c2;
+}
+
+//绘出三边长文字
+void abc()
+{
+char *t="三边:%d、%d、%d";
+char *txt=malloc(strlen(t)+6);
+
+sprintf(txt,t,a,b,c);
+text(txt,tw,SCRH/2+th,2,2,2);
+
+free(txt);
+
+}
+
+
+//启动图
+void star()
+{
+ rect(0,0,SCRW,SCRH);
+ rect_text("<自己写关于>
+
+
+按任意键进入
+",0,0,SCRW,SCRH,255,255,255);
+ REF;
+
+}
+
+//退出图
+void exitapp()
+{
+rect(0,SCRH/2,SCRW,th);text("by:帅俊小花少",10,SCRH/2,255,215,255);
+for(int x=10;x<=SCRW;x+=2)
+ref(0,0,x,SCRH);
+sleep(500);
+
+exit();
+//不可删，否则无法退出
+
+}
+
+
+//矩形框内绘字
+void rect_text(char *txt,int x,int y,int w,int h,int r,int g,int b)
+{
+ rectst rect; 
+ colorst color;
+ rect.x=x;
+ rect.y=y;
+ rect.w=w;
+ rect.h=h;
+
+ color.r=r;
+ color.g=g;
+ color.b=b;
+
+dtextex(txt,rect.x,rect.y,&rect,&color,2,FONT);
+
+}

@@ -1,0 +1,54 @@
+#include <base.h>
+
+int init(void)
+{
+main();return 0;
+}
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN == type)
+    {
+        switch(p1)
+        {
+        case _SRIGHT:
+            exit();
+            break;
+        case _1:
+            break;
+        }
+    }
+return 0;
+}
+int pause(void)
+{
+return 0;
+}
+int resume(void)
+{
+return 0;
+}
+
+int main()
+{
+int a,b;
+cls(200,200,200);
+drect(1,25,SCRW-2,25,200,0,0);//进度条背景
+dtext("手机条码...",0,0,120,0,120,0,1);
+ref(0,0,SCRW,SCRH);
+
+b=SCRW-3;
+for(a=3; a<=b; a=a+1)
+{
+
+                                                                      dline(a,27,a,47,0,0,100);
+ref(a,27,1,21);
+}
+
+b=SCRH;
+for(; b>50; b=b-2)
+{
+drect(0,50,SCRW,SCRH,200,200,200);
+dtext("手机学C：wap.mrpej.com",0,b,255,0,255,0,2);
+ref(0,0,SCRW,SCRH);
+} return 0;
+}                          

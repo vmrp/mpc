@@ -1,0 +1,50 @@
+int len;len=40;
+
+int main()
+{
+int n1,n2,n3,i,ii=0;
+n1=n2=1;
+printf("1 1");
+for(i=2;i<=len;i++)
+{
+n3=n1+n2;
+n1=n2;n2=n3;
+printf(" %d",n3);
+ii++;
+if(ii%5==0)printf("\n");
+}
+return 0;
+}                          #include <base.h>
+
+
+int init()
+{
+main();exit();
+return 0;
+}
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN == type)
+ {
+        switch(p1)
+   {
+ case _SRIGHT:
+tc(10);exit();
+           break;
+        case _1:
+            break;
+        }
+    }
+
+    return 0;
+}
+
+int pause(void)
+{
+    return 0;
+}
+
+int resume(void)
+{
+    return 0;
+}

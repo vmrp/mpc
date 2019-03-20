@@ -1,0 +1,397 @@
+#include <base.h>
+
+#include "c/五子棋v1.0/BMP.h"
+#include "c/五子棋v1.0/win.h"
+
+//背景颜色。
+#define r1 0
+#define g1 0
+#define b1 0
+
+
+//文字颜色
+#define r2 255
+#define g2 255
+#define b2 0
+
+
+#define w 1
+/***
+是否开启自动判断输赢功能。
+1开启 0不开启
+不开启可以提高速度
+***/
+int x,y;
+//当前位置的x,y左标
+
+int Q[18][18];
+memset(Q,0,18*18*4);
+
+
+/***
+记录棋盘上的棋子分布位置。
+数组的每个数的代表不同位置的棋子。
+取值为:
+ 0 时无棋子
+ 1 是黑棋
+ 2 为红棋
+
+***/
+
+int p=0;
+//记录当前总共步数
+
+int KY;
+//按下键盘的按键值
+
+int f;
+//定时器的句柄
+int jm=1;
+/*
+控制界面 
+0 确认退出界面
+1 棋走界面
+2 
+*/
+start();
+
+
+int init(void)
+{ qp();
+  bt();
+  ref(0,0,SCRW,SCRH);
+  return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+
+if(KY_DOWN==type)
+{
+ 
+ if(jm==0||jm==2)
+ EVENT_exit(p1);
+  
+else if(jm==1)
+ switch(p1)
+ {
+  case _SRIGHT:
+  exitapp2();
+  jm=0;
+  break;
+
+ case _SLEFT:
+ yes_chushihua();
+ jm=2;
+ break;
+
+  case _4:
+  case _LEFT:
+//向左
+
+  case _6:
+  case _RIGHT:
+//向右
+
+  case _2:
+  case _UP:
+//向上
+
+  case _8:
+  case _DOWN:
+//向下
+
+//  down(0);
+   KY=p1;
+   EVENT(type);
+   break;
+
+  case _SELECT:
+  case _5:
+  select();
+  break;
+
+  }
+ }
+
+
+ if(jm==1&&type==KY_UP)
+  switch(p1)
+ { 
+  case _2:
+  case _UP:
+
+  case _8:case _DOWN:
+  case _4:
+  case _LEFT:
+
+  case _6:
+  case _RIGHT:
+
+  EVENT(type);
+  break;
+}
+ 
+return 0;
+}
+
+int pause()
+{ return 0; }
+int resume()
+{qz(); return 0;}
+
+
+
+//绘屏幕下方的文字
+void bt()
+{
+ drect(0,SCRW+6,SCRW,SCRH-SCRW,r1,g1,b1);
+
+if(p==0)
+txt("五子棋v1.0",SCRW/2-50,SCRW+10,1);
+
+else 
+{
+char h[5],g[5];
+
+sprintf(h,"%d",p/2+1);
+sprintf(g,"%d",p/2);
+txt("黑棋:第  手",0,SCRW+6,0);
+txt("红棋:第  手",SCRW-120,SCRW+6,0);
+txt(h,80,SCRW+6,1);
+txt(g,SCRW-40,SCRW+6,1);
+}
+
+ txt("重来",0,SCRH-30,1);
+ txt("确定",SCRW/2-30,SCRH-30,1);
+
+ txt("退出",SCRW-55,SCRH-30,1);
+ ref(0,SCRW,SCRW,SCRH/2);
+
+}
+
+
+
+/*
+定时器:
+当按下键盘每过300ms将该方向的(x,y)增加(减小);
+并刷新屏幕上棋子的图像。
+*/
+void down(int data)
+{
+ if(KY==_4||KY==_LEFT)
+ { if(x>0)x--;}
+
+ if(KY==_6||KY==_RIGHT)
+ { if(x<17)x++;}
+
+ if(KY==_2||KY==_UP)
+ { if(y>0)y--;}
+
+ if(KY==_8||KY==_DOWN)
+ { if(y<18)y++;}
+
+ REF();
+}
+
+
+//定时器的控制函数，按下键盘启动，松开键盘停止
+
+void EVENT(int p1)
+{
+
+//松开键盘删除定时器。
+
+ if(f != 0&&p1==KY_UP)
+ {
+  timerdel(f);
+  f=NULL;
+ }
+
+//按下键盘定义并启动定时器。
+
+ else if(f == 0 && p1 == KY_DOWN)
+ {
+  f=timercreate();
+   timerstart(f,300,300,"down",1);
+ }
+
+}
+
+void exitapp()
+{
+ // 确保定时器退出时删除。
+ if(f)timerdel(f);
+ exit();
+}
+
+void exitapp2()
+{
+effsetcon(0,SCRW,SCRW,SCRH/2,50,50,50);
+
+drect(0,SCRW,SCRW,SCRH-SCRW,r1,g1,b1);
+
+txt("是否退出？",SCRW/2-50,SCRH-55,1);
+txt("确定",0,SCRH-30,1);
+txt("取消",SCRW-50,SCRH-30,1);
+ref(0,0,SCRW,SCRH);
+
+}
+
+/*
+按右、左软键*/
+void EVENT_exit(int p1)
+{
+ if(jm==0)
+ switch(p1)
+ {
+  case _SLEFT:
+  exitapp();break;
+
+  case _SRIGHT:
+  jm=1;
+ bt();
+ REF();break;
+  }
+
+if(jm==2)
+switch(p1)
+ {
+  case _SLEFT:
+  jm=1; 
+ chushi();
+  break;
+
+ case _SRIGHT:
+  jm=1;bt();
+  break;
+ }
+}
+
+
+//初始化界面
+void yes_chushihua()
+{
+drect(0,SCRW+6,SCRW,SCRH-SCRW,r1,g1,b1);
+txt("是否初始化？",SCRW/2-75,SCRW+15,1);
+txt("确定",0,SCRH-30,1);
+txt("返回",SCRW-30,SCRH-30,1);
+ref(0,0,SCRW,SCRH);
+
+
+}
+
+
+
+
+//按下中间(5)键
+
+void select()
+{
+ if(Q[x][y]==0)
+ {
+   int i; 
+  p++;
+  if(p%2 == 0)i=2;
+  else i=1;
+
+  Q[x][y]=i;
+
+ qz_h(x*12+6,y*12+6);
+
+if(w==1)
+{ char *n;
+
+ if(win()>0)
+ {
+  effsetcon (0,0,SCRW,SCRH,138,138,138);
+  if(p%2 !=0)n="黑";
+  else n="红";
+   txt("恭喜:",60,150,1);
+   txt(n,115,150,1);
+   txt("棋获胜！",135,150,1);
+  ref(0,0,SCRW,SCRH);
+   sleep(1500);
+   jm=1;
+   chushi();
+ }
+}
+
+}
+
+ else if(Q[x][y] != 0)
+ {
+  drect(0,SCRH-70,SCRW,30,r1,g1,b1);
+  txt("当前位置已有棋子！",5,SCRW+10,0);
+
+  ref(0,0,SCRW,SCRH);
+ sleep(500);
+ bt();
+  
+ }
+
+ref(0,0,SCRW,SCRH);
+
+}
+
+//刷新四周的屏幕
+void REF()
+{
+  qp2(x*12+6,(y-1)*12+6);
+  qp2(x*12+6,(y+1)*12+6);
+  qp2((x-1)*12+6,y*12+6);
+  qp2((x+1)*12+6,y*12+6);
+
+
+
+//上
+if(y-1>=0)
+{ if(Q[x][y-1]==1)
+ rect(1,x*12+6,(y-1)*12+6);
+ if(Q[x][y-1]==2)
+ rect(2,x*12+6,(y-1)*12+6);
+}
+
+//下
+if(y+1<=18)
+{ if(Q[x][y+1]==1)
+ rect(1,x*12+6,(y+1)*12+6);
+ if(Q[x][y+1]==2)
+ rect(2,x*12+6,(y+1)*12+6);
+}
+//左
+if(x-1>=0)
+{
+ if(Q[x-1][y]==1)
+rect(1,(x-1)*12+6,y*12+6);
+if(Q[x-1][y]==2)
+rect(2,(x-1)*12+6,y*12+6);
+}
+
+
+//右
+if(x+1<=18)
+{ if(Q[x+1][y]==1)
+ rect(1,(x+1)*12+6,y*12+6);
+ if(Q[x+1][y]==2)
+ rect(2,(x+1)*12+6,y*12+6);
+
+}
+
+
+//绘出黄棋。
+
+ drect(x*(SCRW/20)+SCRW/20/2,y*(SCRW/20)+SCRW/20/2,SCRW/20,SCRW/20,255,255,0);
+bt();
+
+ref(0,0,SCRW,SCRH);
+
+}
+
+void rect(int j,int x1,int y1)
+{
+if(j==1)
+drect(x1,y1,12,12,138,138,138);
+if(j==2)
+drect(x1,y1,12,12,255,0,0);
+}

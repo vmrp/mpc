@@ -1,0 +1,66 @@
+/*hanoi汉诺塔
+by:每天进步一点
+QQ:643552878
+汉诺塔问题:有3支针A、B、C，A针上有大小不等的n的盘子，大的在下面，如要将A针上的盘子移到C盘上。要求每次只能移动字个盘子，且必须要保持每支针上的盘子大的在下，小的在上。
+求移动步骤
+*/
+
+#include <base.h>
+
+int m;//记录步数
+
+int init()
+{
+ printf("汉诺塔hanoi\n\n");
+ int n=5;
+ //mpc中最大不能超过8个，不然会溢出
+ int time=getuptime();
+
+ printf("A盘数量->>%d\n",n);
+ hanoi(n,'A','B','C');
+
+ time=getuptime()-time;
+
+ printf("总记用时%d.%02dms",time,time/1000%60);
+ exit();
+
+ return 0;
+}
+
+int event(int type, int p1, int p2)
+{
+ if(KY_DOWN==type)
+    {
+ switch(p1)
+  {
+  case _SRIGHT:
+  exit();break;
+  case _1:
+            break;
+
+   }
+  }
+ return 0;
+}
+
+int pause(void)
+{return 0;}
+int resume(void)
+{return 0;}
+
+void move(char x,char y)
+{
+ printf(" \n%d : %c->>%c",++m,x,y);
+}
+
+
+void hanoi(int n,char one,char two,char three)
+{
+ if(n==1)move(one,three);
+ else
+{ hanoi(n-1,one,three,two);
+ move(one,three);
+ hanoi(n-1,two,one,three);
+}
+
+}

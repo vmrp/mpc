@@ -1,0 +1,91 @@
+#include "base.h"
+int com(void)
+{lcd(0);
+dtext("骆志彬~杰作",60,0,255,255,255,0,0);
+dtext("骆意",100,300,240,0,0,0,0);
+dline(0,20,240,20,255,255,255);
+dline(0,300,240,300,255,255,255);
+dline(20,0,20,320,255,255,255);
+dline(220,0,220,320,255,255,255);
+drect(20,20,200,280,0,0,0);
+return 0;
+}
+int init()
+{lcd(0);
+cls(0,0,0);
+dtext("说明帮助:",60,35,255,255,255,0,2);
+dtext("1.1:画线(随机画) ",0,65,255,255,0,0,1);
+dtext("2.手摸画点",0,95,255,255,0,0,1);
+dtext("3.3:开始/清屏/换色",0,125,255,255,0,0,0);
+dtext("4.4:背景颜色",0,155,255,255,0,0,0);  dtext("5.6横7竖",0,185,255,255,0,0,0);
+dtext("6.右软键退出,0帮助",0,215,255,255,0,0,0);
+    
+  ref(0,0,240, 320);
+      return 0;
+}
+
+int event(int luo, int p0, int p1)
+{
+    if(luo==KY_DOWN && p0==_SRIGHT)
+    {
+        exit();
+        return 0;
+    }
+
+if(p0==_6&&luo==KY_DOWN)
+{int a=rand();
+dline(0,a%200,240,a%200,255,255,0);
+ref(20,20,200,280);
+}
+if(p0==_7&&luo==KY_DOWN) 
+{int b=rand();
+dline(b%255,0,b%255,320,255,255,0);
+ref(20,20,200,280);
+
+} 
+
+   if(luo==MS_DOWN||luo==MS_MOVE)
+   {
+       dpointex(p0,p1,rand()%255,rand()/55,rand()%600); 
+ref( 20, 20, 200,280);
+    } 
+
+if(p0==_3&&luo==KY_DOWN)
+{
+cls(rand()%255,rand()%255,rand()%255);
+com();
+ref(0,0,240,320);
+}
+
+if(p0==_1&&luo==KY_DOWN)
+{
+int a=rand();
+dline(a%255,rand()/100,a%300,a/200,255,255,255);
+
+ref(19,19,200,280);
+}
+
+if(p0==_2&&luo==KY_DOWN)
+{
+cls(0,0,0);
+}
+if(p0==_4&&luo==KY_DOWN)
+{ cls(rand()%255,rand()%200,rand()%300);
+/*
+shaderect(0,0,240,320,rand()/240,rand()/245,2);*/
+ref(20,20,200,280);
+}
+
+if(p0==_0&&luo==KY_DOWN)
+{ init();
+}
+    return 0;    
+}
+int pause()
+{
+    return 0;
+}
+int resume()
+{
+    return 0;
+}                                                                                                     
